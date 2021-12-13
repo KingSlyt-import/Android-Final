@@ -7,8 +7,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,20 +23,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.temp_main_activity);
 
-//        tab_bar = findViewById(R.id.tab_bar);
         bottomNavigationView = findViewById(R.id.bottom_bar);
         view_pager = findViewById(R.id.view_pager);
 
         ViewPagerAdapter vpa = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         view_pager.setAdapter(vpa);
-//        bottomNavigationView.setupWithViewPager(view_pager);
 
+        //show which page you are in in bottom bar
         view_pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
-
             @Override
             public void onPageSelected(int position) {
                 switch (position) {
@@ -58,20 +59,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        //change tab when select menu items
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_home:
-                        view_pager.setCurrentItem(0);
-                    case R.id.menu_add:
-                        view_pager.setCurrentItem(1);
-                    case R.id.menu_list:
-                        view_pager.setCurrentItem(2);
-                    case R.id.menu_option:
-                        view_pager.setCurrentItem(3);
+                if (item.getTitle().equals("Home")) {
+                    view_pager.setCurrentItem(0);
                 }
-                return true;
+                if (item.getTitle().equals("Add")) {
+                    view_pager.setCurrentItem(1);
+                }
+                if (item.getTitle().equals("List")) {
+                    view_pager.setCurrentItem(2);
+                }
+                if (item.getTitle().equals("Option")) {
+                    view_pager.setCurrentItem(3);
+                }
+                return false;
             }
         });
     }
