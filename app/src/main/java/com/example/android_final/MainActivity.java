@@ -2,6 +2,7 @@ package com.example.android_final;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -83,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        // Check default app theme
 
     }
 

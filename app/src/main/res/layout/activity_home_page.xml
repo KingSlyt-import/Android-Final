@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     tools:context=".HomePage">
 
     <Button
@@ -32,7 +31,7 @@
         android:layout_height="147dp"
         android:text="13"
         android:textColor="#5757D5"
-        android:textSize="124dp"
+        android:textSize="124sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

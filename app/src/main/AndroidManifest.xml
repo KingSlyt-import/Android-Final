@@ -11,13 +11,13 @@
         android:theme="@style/Theme.AndroidFinal">
         <activity
             android:name=".CreateTask"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CreateSchedule"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CreateNote"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CreateCategories"
             android:exported="false" />
