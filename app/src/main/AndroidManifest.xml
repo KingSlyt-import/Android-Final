@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidFinal">
         <activity
+            android:name=".CreateTask"
+            android:exported="false" />
+        <activity
+            android:name=".CreateSchedule"
+            android:exported="false" />
+        <activity
+            android:name=".CreateNote"
+            android:exported="false" />
+        <activity
             android:name=".CreateCategories"
             android:exported="false" />
         <activity

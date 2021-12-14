@@ -4,4 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateCategories"/>
+    tools:context=".CreateCategories">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="247dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:text="Root"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
+        android:text="Choose Icon"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="249dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="40dp"
+        android:text="Color"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
+        android:text="Description"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <EditText
+        android:id="@+id/textView6"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="68dp"
+        android:text="Enter Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -89,15 +89,18 @@ public class AddFragment extends Fragment {
                         }
 
                         if (item.getTitle().equals("Notes")) {
-                            test.setText("Notes");
+                            Intent i = new Intent(getActivity(), CreateNote.class);
+                            startActivity(i);
                         }
 
                         if (item.getTitle().equals("Schedules")) {
-                            test.setText("Schedules");
+                            Intent i = new Intent(getActivity(), CreateSchedule.class);
+                            startActivity(i);
                         }
-
+//
                         if (item.getTitle().equals("Tasks")) {
-                            test.setText("Tasks");
+                            Intent i = new Intent(getActivity(), CreateTask.class);
+                            startActivity(i);
                         }
                         return true;
                     }
