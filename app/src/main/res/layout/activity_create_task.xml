@@ -17,8 +17,8 @@
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="216dp"
-        android:layout_height="47dp"
+        android:layout_width="81dp"
+        android:layout_height="34dp"
         android:layout_marginTop="36dp"
         android:text="Complete"
         app:layout_constraintStart_toStartOf="@+id/radioGroup"
@@ -26,20 +26,20 @@
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="284dp"
-        android:layout_height="32dp"
+        android:layout_width="278dp"
+        android:layout_height="38dp"
         android:layout_marginTop="32dp"
         android:text="Important Level"
         app:layout_constraintStart_toStartOf="@+id/textView20"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
-    <TextView
+    <EditText
         android:id="@+id/textView19"
-        android:layout_width="284dp"
-        android:layout_height="32dp"
+        android:layout_width="282dp"
+        android:layout_height="48dp"
         android:layout_marginStart="92dp"
         android:layout_marginTop="52dp"
-        android:text="TextView"
+        android:hint="Thing to do"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +48,7 @@
         android:layout_width="284dp"
         android:layout_height="32dp"
         android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:text="Choose Category"
         app:layout_constraintStart_toStartOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 

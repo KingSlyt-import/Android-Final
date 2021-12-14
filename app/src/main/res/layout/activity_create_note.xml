@@ -17,8 +17,8 @@
 
     <EditText
         android:id="@+id/textView7"
-        android:layout_width="250dp"
-        android:layout_height="31dp"
+        android:layout_width="249dp"
+        android:layout_height="62dp"
         android:layout_marginStart="92dp"
         android:layout_marginTop="44dp"
         android:hint="Title"
