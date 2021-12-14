@@ -6,7 +6,11 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 //    private TabLayout tab_bar;
     private ViewPager view_pager;
     private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,5 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
+
+
 }
