@@ -7,54 +7,64 @@
     tools:context=".CreateCategories">
 
     <EditText
-        android:id="@+id/textView8"
-        android:layout_width="247dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="36dp"
-        android:hint="Root"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/cate_name"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="40dp"
+        android:hint="Enter Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/cate_dir"
         android:layout_width="249dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
-        android:text="Choose Icon"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        android:hint="Root"
+        app:layout_constraintStart_toStartOf="@+id/cate_name"
+        app:layout_constraintTop_toBottomOf="@+id/cate_name" />
 
-    <EditText
-        android:id="@+id/textView10"
-        android:layout_width="249dp"
-        android:layout_height="41dp"
+    <TextView
+        android:id="@+id/cate_icon"
+        android:layout_width="99dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
+        android:text="Choose Icon"
+        app:layout_constraintStart_toStartOf="@+id/cate_dir"
+        app:layout_constraintTop_toBottomOf="@+id/cate_dir" />
+
+    <Spinner
+        android:id="@+id/color_spinner"
+        android:layout_width="133dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/cate_color"
+        app:layout_constraintTop_toTopOf="@+id/cate_color" />
+
+    <TextView
+        android:id="@+id/cate_color"
+        android:layout_width="99dp"
+        android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:text="Color"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintStart_toStartOf="@+id/cate_icon"
+        app:layout_constraintTop_toBottomOf="@+id/cate_icon" />
 
     <EditText
-        android:id="@+id/edtInput"
-        android:layout_width="300dp"
+        android:id="@+id/cate_des"
+        android:layout_width="249dp"
         android:layout_height="270dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:gravity="top|left"
         android:hint="textarea for description"
         android:inputType="textCapSentences|textMultiLine"
         android:maxLength="2000"
         android:maxLines="4"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <EditText
-        android:id="@+id/textView6"
-        android:layout_width="249dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="48dp"
-        android:text="Enter Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/cate_color"
+        app:layout_constraintTop_toBottomOf="@+id/cate_color" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

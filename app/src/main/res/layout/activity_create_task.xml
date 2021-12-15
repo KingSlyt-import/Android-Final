@@ -7,10 +7,10 @@
     tools:context=".CreateTask">
 
     <EditText
-        android:id="@+id/textView26"
-        android:layout_width="283dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="36dp"
+        android:id="@+id/tsk_note"
+        android:layout_width="279dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="42dp"
         android:hint="Add note"
         app:layout_constraintStart_toStartOf="@+id/textView24"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
@@ -18,42 +18,42 @@
     <TextView
         android:id="@+id/textView24"
         android:layout_width="81dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="36dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="42dp"
         android:text="Complete"
-        app:layout_constraintStart_toStartOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintStart_toStartOf="@+id/tsk_imp"
+        app:layout_constraintTop_toBottomOf="@+id/tsk_imp" />
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="278dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="279dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="42dp"
         android:text="Important Level"
-        app:layout_constraintStart_toStartOf="@+id/textView20"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintStart_toStartOf="@+id/tsk_cate"
+        app:layout_constraintTop_toBottomOf="@+id/tsk_cate" />
 
     <EditText
-        android:id="@+id/textView19"
-        android:layout_width="282dp"
-        android:layout_height="48dp"
+        android:id="@+id/tsk_name"
+        android:layout_width="279dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="42dp"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="52dp"
         android:hint="Thing to do"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView20"
-        android:layout_width="284dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="32dp"
+        android:id="@+id/tsk_cate"
+        android:layout_width="279dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="42dp"
         android:text="Choose Category"
-        app:layout_constraintStart_toStartOf="@+id/textView19"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintStart_toStartOf="@+id/tsk_name"
+        app:layout_constraintTop_toBottomOf="@+id/tsk_name" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/tsk_imp"
         android:layout_width="229dp"
         android:layout_height="48dp"
         android:layout_marginTop="12dp"
@@ -78,7 +78,7 @@
     </RadioGroup>
 
     <RadioButton
-        android:id="@+id/radioButton4"
+        android:id="@+id/tsk_complete"
         android:layout_width="39dp"
         android:layout_height="37dp"
         app:layout_constraintStart_toEndOf="@+id/textView24"

@@ -9,43 +9,43 @@
     tools:layout_editor_absoluteY="59dp">
 
     <TextView
-        android:id="@+id/textView15"
-        android:layout_width="311dp"
-        android:layout_height="34dp"
+        android:id="@+id/sch_icon"
+        android:layout_width="309dp"
+        android:layout_height="42dp"
         android:layout_marginTop="32dp"
         android:text="Icon"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintStart_toStartOf="@+id/sch_cate"
+        app:layout_constraintTop_toBottomOf="@+id/sch_cate" />
 
     <EditText
-        android:id="@+id/textView16"
-        android:layout_width="307dp"
-        android:layout_height="45dp"
+        android:id="@+id/sch_time"
+        android:layout_width="309dp"
+        android:layout_height="42dp"
         android:layout_marginTop="32dp"
         android:hint="Time Range"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintStart_toStartOf="@+id/sch_icon"
+        app:layout_constraintTop_toBottomOf="@+id/sch_icon" />
 
     <EditText
-        android:id="@+id/textView17"
-        android:layout_width="303dp"
-        android:layout_height="46dp"
+        android:id="@+id/sch_day"
+        android:layout_width="309dp"
+        android:layout_height="42dp"
         android:layout_marginTop="32dp"
         android:hint="Day"
-        app:layout_constraintStart_toStartOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintStart_toStartOf="@+id/sch_time"
+        app:layout_constraintTop_toBottomOf="@+id/sch_time" />
 
     <TextView
-        android:id="@+id/textView18"
-        android:layout_width="123dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="24dp"
+        android:id="@+id/sch_repeat"
+        android:layout_width="100dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
         android:text="Repeat or not"
-        app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintStart_toStartOf="@+id/sch_day"
+        app:layout_constraintTop_toBottomOf="@+id/sch_day" />
 
     <EditText
-        android:id="@+id/textView12"
+        android:id="@+id/sch_name"
         android:layout_width="309dp"
         android:layout_height="42dp"
         android:layout_marginTop="32dp"
@@ -56,18 +56,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="311dp"
-        android:layout_height="34dp"
+        android:id="@+id/sch_cate"
+        android:layout_width="309dp"
+        android:layout_height="42dp"
         android:layout_marginTop="32dp"
         android:text="Choose category"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintStart_toStartOf="@+id/sch_name"
+        app:layout_constraintTop_toBottomOf="@+id/sch_name" />
 
     <RadioButton
         android:id="@+id/radioButton5"
         android:layout_width="35dp"
         android:layout_height="36dp"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toTopOf="@+id/textView18" />
+        app:layout_constraintStart_toEndOf="@+id/sch_repeat"
+        app:layout_constraintTop_toTopOf="@+id/sch_repeat" />
 </androidx.constraintlayout.widget.ConstraintLayout>
