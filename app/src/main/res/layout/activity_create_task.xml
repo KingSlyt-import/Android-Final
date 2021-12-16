@@ -6,11 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".CreateTask">
 
+    <TextView
+        android:id="@+id/sch_day2"
+        android:layout_width="279dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:hint="Day"
+        app:layout_constraintStart_toStartOf="@+id/tsk_cate"
+        app:layout_constraintTop_toBottomOf="@+id/tsk_cate" />
+
+    <DatePicker
+        android:id="@+id/datePicker2"
+        android:layout_width="250dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="68dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/sch_day2"
+        app:layout_constraintTop_toBottomOf="@+id/sch_day2" />
+
     <EditText
         android:id="@+id/tsk_note"
         android:layout_width="279dp"
         android:layout_height="42dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="24dp"
         android:hint="Add note"
         app:layout_constraintStart_toStartOf="@+id/textView24"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
@@ -19,7 +41,7 @@
         android:id="@+id/textView24"
         android:layout_width="81dp"
         android:layout_height="42dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="24dp"
         android:text="Complete"
         app:layout_constraintStart_toStartOf="@+id/tsk_imp"
         app:layout_constraintTop_toBottomOf="@+id/tsk_imp" />
@@ -28,10 +50,10 @@
         android:id="@+id/textView22"
         android:layout_width="279dp"
         android:layout_height="42dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="24dp"
         android:text="Important Level"
-        app:layout_constraintStart_toStartOf="@+id/tsk_cate"
-        app:layout_constraintTop_toBottomOf="@+id/tsk_cate" />
+        app:layout_constraintStart_toStartOf="@+id/datePicker2"
+        app:layout_constraintTop_toBottomOf="@+id/datePicker2" />
 
     <EditText
         android:id="@+id/tsk_name"
@@ -47,15 +69,15 @@
         android:id="@+id/tsk_cate"
         android:layout_width="279dp"
         android:layout_height="42dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="24dp"
         android:text="Choose Category"
         app:layout_constraintStart_toStartOf="@+id/tsk_name"
         app:layout_constraintTop_toBottomOf="@+id/tsk_name" />
 
     <RadioGroup
         android:id="@+id/tsk_imp"
-        android:layout_width="229dp"
-        android:layout_height="48dp"
+        android:layout_width="159dp"
+        android:layout_height="45dp"
         android:layout_marginTop="12dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@+id/textView22"
@@ -84,7 +106,7 @@
         android:id="@+id/button4"
         android:layout_width="67dp"
         android:layout_height="35dp"
-        android:text="./"
+        android:text="✔"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
