@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidFinal">
         <activity
+            android:name=".ImageSpinnerAdapter"
+            android:exported="false" />
+        <activity
             android:name=".CreateTask"
             android:exported="true" />
         <activity

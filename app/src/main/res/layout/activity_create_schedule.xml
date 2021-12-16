@@ -9,31 +9,22 @@
     tools:layout_editor_absoluteY="59dp">
 
     <TextView
-        android:id="@+id/sch_icon"
-        android:layout_width="309dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:text="Icon"
-        app:layout_constraintStart_toStartOf="@+id/sch_cate"
-        app:layout_constraintTop_toBottomOf="@+id/sch_cate" />
-
-    <EditText
         android:id="@+id/sch_time"
         android:layout_width="309dp"
         android:layout_height="42dp"
         android:layout_marginTop="32dp"
         android:hint="Time Range"
-        app:layout_constraintStart_toStartOf="@+id/sch_icon"
-        app:layout_constraintTop_toBottomOf="@+id/sch_icon" />
+        app:layout_constraintStart_toStartOf="@+id/sch_cate"
+        app:layout_constraintTop_toBottomOf="@+id/sch_cate" />
 
-    <EditText
+    <TextView
         android:id="@+id/sch_day"
         android:layout_width="309dp"
         android:layout_height="42dp"
         android:layout_marginTop="32dp"
         android:hint="Day"
         app:layout_constraintStart_toStartOf="@+id/sch_time"
-        app:layout_constraintTop_toBottomOf="@+id/sch_time" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <TextView
         android:id="@+id/sch_repeat"
@@ -42,16 +33,16 @@
         android:layout_marginTop="32dp"
         android:text="Repeat or not"
         app:layout_constraintStart_toStartOf="@+id/sch_day"
-        app:layout_constraintTop_toBottomOf="@+id/sch_day" />
+        app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
     <EditText
         android:id="@+id/sch_name"
         android:layout_width="309dp"
         android:layout_height="42dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:hint="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="0.656"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,4 +61,46 @@
         android:layout_height="36dp"
         app:layout_constraintStart_toEndOf="@+id/sch_repeat"
         app:layout_constraintTop_toTopOf="@+id/sch_repeat" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sch_time">
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="157dp"
+            android:layout_height="143dp"
+            android:timePickerMode="spinner" />
+
+        <TimePicker
+            android:id="@+id/timePicker2"
+            android:layout_width="168dp"
+            android:layout_height="143dp"
+            android:timePickerMode="spinner" />
+
+
+    </LinearLayout>
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="251dp"
+        android:layout_height="133dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sch_day" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="67dp"
+        android:layout_height="35dp"
+        android:text="./"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -67,4 +67,20 @@
         app:layout_constraintStart_toStartOf="@+id/cate_color"
         app:layout_constraintTop_toBottomOf="@+id/cate_color" />
 
+    <Spinner
+        android:id="@+id/icon_spinner"
+        android:layout_width="133dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/cate_icon"
+        app:layout_constraintTop_toTopOf="@+id/cate_icon" />
+
+    <Button
+        android:id="@+id/cate_done"
+        android:layout_width="67dp"
+        android:layout_height="35dp"
+        android:text="./"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
