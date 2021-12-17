@@ -71,7 +71,6 @@ public class AddFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add, container, false);
         btn_add = view.findViewById(R.id.btn_add);
-        TextView test = view.findViewById(R.id.test);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

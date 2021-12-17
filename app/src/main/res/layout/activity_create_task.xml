@@ -6,11 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".CreateTask">
 
+    <Spinner
+        android:id="@+id/task_cate_spinner"
+        android:layout_width="133dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tsk_cate"
+        app:layout_constraintTop_toTopOf="@+id/tsk_cate" />
+
     <TextView
         android:id="@+id/sch_day2"
-        android:layout_width="279dp"
-        android:layout_height="42dp"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
         android:hint="Day"
         app:layout_constraintStart_toStartOf="@+id/tsk_cate"
         app:layout_constraintTop_toBottomOf="@+id/tsk_cate" />
@@ -33,6 +42,7 @@
         android:layout_width="279dp"
         android:layout_height="42dp"
         android:layout_marginTop="24dp"
+        android:background="@null"
         android:hint="Add note"
         app:layout_constraintStart_toStartOf="@+id/textView24"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
@@ -40,37 +50,41 @@
     <TextView
         android:id="@+id/textView24"
         android:layout_width="81dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
         android:text="Complete"
         app:layout_constraintStart_toStartOf="@+id/tsk_imp"
         app:layout_constraintTop_toBottomOf="@+id/tsk_imp" />
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="279dp"
-        android:layout_height="42dp"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
         android:text="Important Level"
         app:layout_constraintStart_toStartOf="@+id/datePicker2"
         app:layout_constraintTop_toBottomOf="@+id/datePicker2" />
 
     <EditText
         android:id="@+id/tsk_name"
-        android:layout_width="279dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="42dp"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
         android:layout_marginStart="92dp"
+        android:layout_marginTop="42dp"
+        android:background="@null"
         android:hint="Thing to do"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tsk_cate"
-        android:layout_width="279dp"
-        android:layout_height="42dp"
+        android:layout_width="99dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
-        android:text="Choose Category"
+        android:gravity="center_vertical"
+        android:text="Category"
         app:layout_constraintStart_toStartOf="@+id/tsk_name"
         app:layout_constraintTop_toBottomOf="@+id/tsk_name" />
 
@@ -113,7 +127,7 @@
     <RadioButton
         android:id="@+id/tsk_complete"
         android:layout_width="39dp"
-        android:layout_height="37dp"
+        android:layout_height="48dp"
         app:layout_constraintStart_toEndOf="@+id/textView24"
         app:layout_constraintTop_toTopOf="@+id/textView24" />
 

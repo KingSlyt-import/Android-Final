@@ -7,23 +7,26 @@
     tools:context=".CreateCategories">
 
     <EditText
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/cate_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="249dp"
         android:layout_height="48dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="40dp"
+        android:background="@null"
         android:hint="Enter Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/cate_dir"
-        android:layout_width="249dp"
+        android:layout_width="99dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
-        android:hint="Root"
+        android:gravity="center_vertical"
+        android:hint="Category"
+        android:textAlignment="textStart"
         app:layout_constraintStart_toStartOf="@+id/cate_name"
         app:layout_constraintTop_toBottomOf="@+id/cate_name" />
 
@@ -32,7 +35,9 @@
         android:layout_width="99dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
         android:text="Choose Icon"
+        android:textAlignment="textStart"
         app:layout_constraintStart_toStartOf="@+id/cate_dir"
         app:layout_constraintTop_toBottomOf="@+id/cate_dir" />
 
@@ -40,7 +45,7 @@
         android:id="@+id/color_spinner"
         android:layout_width="133dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintStart_toEndOf="@+id/cate_color"
         app:layout_constraintTop_toTopOf="@+id/cate_color" />
 
@@ -49,7 +54,9 @@
         android:layout_width="99dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
         android:text="Color"
+        android:textAlignment="textStart"
         app:layout_constraintStart_toStartOf="@+id/cate_icon"
         app:layout_constraintTop_toBottomOf="@+id/cate_icon" />
 
@@ -59,6 +66,7 @@
         android:layout_height="270dp"
         android:layout_marginTop="40dp"
         android:layout_weight="1"
+        android:background="@null"
         android:gravity="top|left"
         android:hint="textarea for description"
         android:inputType="textCapSentences|textMultiLine"
@@ -71,7 +79,7 @@
         android:id="@+id/icon_spinner"
         android:layout_width="133dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintStart_toEndOf="@+id/cate_icon"
         app:layout_constraintTop_toTopOf="@+id/cate_icon" />
 
@@ -82,5 +90,13 @@
         android:text="✔"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/cate_cate_spinner"
+        android:layout_width="133dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/cate_dir"
+        app:layout_constraintTop_toTopOf="@+id/cate_dir" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,7 @@ public class CreateCategories extends AppCompatActivity {
     TextView cate_icon;
     //int color_posi, icon_posi;
     Button cate_done;
-
+    private ArrayList<String> cate_array;
     List<String> color = Arrays.asList("Black", "Pink!", "Blue", "Red", "Brown");
 
     @Override
@@ -35,11 +35,22 @@ public class CreateCategories extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_categories);
 
-        Spinner spinner = findViewById(R.id.color_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(CreateCategories.this, R.array.color_array, android.R.layout.simple_list_item_1);
+        //category select
+        GetCategoryFromDB getC = new GetCategoryFromDB();
+        cate_array = getC.getCategory();
+
+        Spinner spinner = findViewById(R.id.cate_cate_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateCategories.this, android.R.layout.simple_list_item_1,cate_array);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+        //color select
+        Spinner cate_cate_spinner = findViewById(R.id.color_spinner);
+        ArrayAdapter<CharSequence> c_adapter = ArrayAdapter.createFromResource(CreateCategories.this, R.array.color_array, android.R.layout.simple_list_item_1);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cate_cate_spinner.setAdapter(c_adapter);
+
+        //icon select
         Spinner icon_spinner = findViewById(R.id.icon_spinner);
         ImageSpinnerAdapter icon_adapter = new ImageSpinnerAdapter(this, new Integer[]{R.drawable.icon1, R.drawable.icon2, R.drawable.icon3});
         icon_spinner.setAdapter(icon_adapter);
@@ -51,8 +62,8 @@ public class CreateCategories extends AppCompatActivity {
         cate_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text[0] = spinner.getSelectedItem().toString();
-                icon[0] = icon_spinner.getSelectedItemPosition();
+                text[0] = spinner.getSelectedItem().toString();     //cate
+                icon[0] = icon_spinner.getSelectedItemPosition();   //icon
                 cate_des.setText(text[0]+"   "+icon[0]);
             }
         });

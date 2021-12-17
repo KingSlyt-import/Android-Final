@@ -10,18 +10,20 @@
 
     <TextView
         android:id="@+id/sch_time"
-        android:layout_width="309dp"
-        android:layout_height="42dp"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
         android:layout_marginTop="32dp"
+        android:gravity="center_vertical"
         android:hint="Time Range"
         app:layout_constraintStart_toStartOf="@+id/sch_cate"
         app:layout_constraintTop_toBottomOf="@+id/sch_cate" />
 
     <TextView
         android:id="@+id/sch_day"
-        android:layout_width="309dp"
-        android:layout_height="42dp"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
         android:layout_marginTop="32dp"
+        android:gravity="center_vertical"
         android:hint="Day"
         app:layout_constraintStart_toStartOf="@+id/sch_time"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
@@ -29,16 +31,17 @@
     <TextView
         android:id="@+id/sch_repeat"
         android:layout_width="100dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:layout_marginTop="32dp"
+        android:gravity="center_vertical"
         android:text="Repeat or not"
         app:layout_constraintStart_toStartOf="@+id/sch_day"
         app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
     <EditText
         android:id="@+id/sch_name"
-        android:layout_width="309dp"
-        android:layout_height="42dp"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
         android:layout_marginTop="48dp"
         android:hint="Name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,17 +51,26 @@
 
     <TextView
         android:id="@+id/sch_cate"
-        android:layout_width="309dp"
-        android:layout_height="42dp"
+        android:layout_width="99dp"
+        android:layout_height="48dp"
         android:layout_marginTop="32dp"
-        android:text="Choose category"
+        android:gravity="center_vertical"
+        android:text="Category"
         app:layout_constraintStart_toStartOf="@+id/sch_name"
         app:layout_constraintTop_toBottomOf="@+id/sch_name" />
 
+    <Spinner
+        android:id="@+id/schedule_cate_spinner"
+        android:layout_width="133dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/sch_cate"
+        app:layout_constraintTop_toTopOf="@+id/sch_cate" />
+
     <RadioButton
         android:id="@+id/radioButton5"
-        android:layout_width="35dp"
-        android:layout_height="36dp"
+        android:layout_width="34dp"
+        android:layout_height="48dp"
         app:layout_constraintStart_toEndOf="@+id/sch_repeat"
         app:layout_constraintTop_toTopOf="@+id/sch_repeat" />
 
