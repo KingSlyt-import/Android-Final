@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidFinal">
         <activity
+            android:name=".ImageSpinnerAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".CreateTask"
+            android:exported="true" />
+        <activity
+            android:name=".CreateSchedule"
+            android:exported="true" />
+        <activity
+            android:name=".CreateNote"
+            android:exported="true" />
+        <activity
+            android:name=".CreateCategories"
+            android:exported="false" />
+        <activity
+            android:name=".ViewPagerAdapter"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
