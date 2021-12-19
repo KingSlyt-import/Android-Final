@@ -1,11 +1,10 @@
-package com.example.android_final;
+package com.example.android_final.addFunction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -15,20 +14,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.android_final.GetCategoryFromDB;
+import com.example.android_final.adapter.ImageSpinnerAdapter;
+import com.example.android_final.R;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class CreateCategories extends AppCompatActivity {
 
     Toolbar toolbar;
     TextView cate_icon;
-    //int color_posi, icon_posin;
     Button done_button;
     Button cancel_button;
     ProgressBar progressBar;
-    List<String> color = Arrays.asList("Black", "Pin!", "Blue", "Red", "Brown");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +61,6 @@ public class CreateCategories extends AppCompatActivity {
 
         //confirm or cancel operation
         progressBar = findViewById(R.id.category_progressbar);
-        final String[] text = new String[1];
-        final int[] icon = new int[1];
-        EditText cate_des = findViewById(R.id.cate_des);
         done_button = findViewById(R.id.cate_done);
         done_button.setOnClickListener(view -> {
             progressBar.setVisibility(View.VISIBLE);
@@ -77,7 +73,7 @@ public class CreateCategories extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-                Toast.makeText(v.getContext(), "Canceled Operation", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Canceled operation", Toast.LENGTH_SHORT).show();
                 onBackPressed();
             }
         });

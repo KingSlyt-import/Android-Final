@@ -13,19 +13,19 @@
             android:name=".ImageSpinnerAdapter"
             android:exported="false" />
         <activity
-            android:name=".CreateTask"
+            android:name=".addFunction.CreateTask"
             android:exported="true" />
         <activity
-            android:name=".CreateSchedule"
+            android:name=".addFunction.CreateSchedule"
             android:exported="true" />
         <activity
-            android:name=".CreateNote"
+            android:name=".addFunction.CreateNote"
             android:exported="true" />
         <activity
-            android:name=".CreateCategories"
+            android:name=".addFunction.CreateCategories"
             android:exported="false" />
         <activity
-            android:name=".ViewPagerAdapter"
+            android:name=".adapter.ViewPagerAdapter"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

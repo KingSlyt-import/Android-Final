@@ -1,4 +1,4 @@
-package com.example.android_final;
+package com.example.android_final.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,9 +7,10 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-class ImageSpinnerAdapter extends ArrayAdapter<Integer> {
+import com.example.android_final.R;
+
+public class ImageSpinnerAdapter extends ArrayAdapter<Integer> {
     private Integer[] images;
     private Context ctx;
 

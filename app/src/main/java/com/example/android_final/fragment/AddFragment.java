@@ -1,4 +1,4 @@
-package com.example.android_final;
+package com.example.android_final.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +9,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.android_final.R;
+import com.example.android_final.addFunction.CreateCategories;
+import com.example.android_final.addFunction.CreateNote;
+import com.example.android_final.addFunction.CreateSchedule;
+import com.example.android_final.addFunction.CreateTask;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**

@@ -1,10 +1,13 @@
-package com.example.android_final;
+package com.example.android_final.addFunction;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.example.android_final.GetCategoryFromDB;
+import com.example.android_final.R;
 
 import java.util.ArrayList;
 
