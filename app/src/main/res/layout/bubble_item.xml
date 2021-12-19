@@ -6,8 +6,7 @@
     android:layout_marginTop="7dp"
     android:background="@drawable/circle_background"
     android:gravity="center"
-    android:orientation="vertical"
-    android:padding="5dp">
+    android:orientation="vertical">
 
 
     <LinearLayout
