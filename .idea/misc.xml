@@ -8,7 +8,6 @@
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_home_page.xml" value="0.1" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_register.xml" value="0.1766304347826087" />
-        <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_reset_password.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/bar_layout.xml" value="0.11145833333333334" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/fragment_option.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/main_activity.xml" value="0.11041666666666666" />
@@ -17,34 +16,58 @@
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_create_note.xml" value="0.1947463768115942" />
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_create_schedule.xml" value="0.1947463768115942" />
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_create_task.xml" value="0.15942028985507245" />
-        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_home_page.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_home_page.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_main.xml" value="0.20052083333333334" />
-        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_add.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_add.xml" value="0.22" />
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_list.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_notes.xml" value="0.1308876811594203" />
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_option.xml" value="0.23214285714285715" />
+<<<<<<< HEAD
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/item_from_message.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/login.xml" value="0.18795289855072464" />
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/temp_main_activity.xml" value="0.15942028985507245" />
+=======
+        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_schedules.xml" value="0.1308876811594203" />
+        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_tasks.xml" value="0.1308876811594203" />
+        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/icon_spinner_layout.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/item_from_message.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/login.xml" value="0.18795289855072464" />
+        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/main_activity.xml" value="0.14266304347826086" />
+        <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/layout/temp_main_activity.xml" value="0.22" />
+>>>>>>> origin/master
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/menu/menu_bottom.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/menu/menu_popup.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/DUCQUAN/AndroidStudioProjects/Android-Final/app/src/main/res/menu/nav_menu.xml" value="0.5" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2601851851851852" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/drawable/circle_background2.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/drawable/gradient_spinner.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2601851851851852" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/drawable/round_style.xml" value="0.2601851851851852" />
+<<<<<<< HEAD
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_choose_icon.xml" value="0.25" />
+=======
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/drawable/sync.xml" value="0.26614583333333336" />
+>>>>>>> origin/master
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_create_categories.xml" value="0.264" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_create_note.xml" value="0.264" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_create_schedule.xml" value="0.264" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_create_task.xml" value="0.264" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/bubble_item.xml" value="0.25" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/circle_background.xml" value="0.25" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_add.xml" value="0.264" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_list.xml" value="0.25" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_option.xml" value="0.25" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/home.xml" value="0.264" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/homepage.xml" value="0.19972826086956522" />
+<<<<<<< HEAD
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/icon_spinner_layout.xml" value="0.25" />
+=======
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/icon_spinner.xml" value="0.25" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/iconspinner.xml" value="0.25815217391304346" />
+>>>>>>> origin/master
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/item_from_message.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/login.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/temp_main_activity.xml" value="0.264" />

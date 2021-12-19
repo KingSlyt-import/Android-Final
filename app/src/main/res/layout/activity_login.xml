@@ -7,13 +7,19 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".auth.LoginActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/bar_layout"
-        app:layout_constraintBottom_toTopOf="@+id/email"
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Note App"
+        android:textSize="60sp"
+        android:textColor="@color/white"
+        android:textStyle="italic|bold"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/email"
@@ -26,11 +32,14 @@
         android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintStart_toStartOf="@+id/app_title"
+        app:layout_constraintTop_toBottomOf="@+id/app_title"
+        tools:ignore="HardcodedText,RtlSymmetry"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/password"
@@ -44,10 +53,13 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        tools:ignore="HardcodedText,RtlSymmetry"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btn_login"
@@ -62,7 +74,8 @@
         android:backgroundTint="#B22222"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/forgotPassword"
@@ -74,7 +87,8 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/createAccount"
@@ -85,7 +99,8 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/forgotPassword"
+        tools:ignore="HardcodedText" />
 
     <ProgressBar
         android:id="@+id/progressBar3"
