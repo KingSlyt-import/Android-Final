@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".auth.ResetPasswordActivity"
-            android:exported="false" />
+            android:parentActivityName=".auth.LoginActivity" />
         <activity
             android:name=".auth.RegisterActivity"
             android:parentActivityName=".auth.LoginActivity" />
