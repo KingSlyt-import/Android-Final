@@ -14,6 +14,8 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AddFragment#newInstance} factory method to
@@ -30,7 +32,7 @@ public class AddFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Button btn_add;
+    private FloatingActionButton btn_add;
 
 
 
@@ -70,7 +72,7 @@ public class AddFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add, container, false);
-        btn_add = view.findViewById(R.id.btn_add);
+        btn_add = view.findViewById(R.id.fragment_add_note_addBtn);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

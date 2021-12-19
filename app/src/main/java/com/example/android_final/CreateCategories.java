@@ -1,46 +1,51 @@
 package com.example.android_final;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class CreateCategories extends AppCompatActivity {
 
+    Toolbar toolbar;
     TextView cate_icon;
-    //int color_posi, icon_posi;
-    Button cate_done;
-    private ArrayList<String> cate_array;
-    List<String> color = Arrays.asList("Black", "Pink!", "Blue", "Red", "Brown");
+    //int color_posi, icon_posin;
+    Button done_button;
+    Button cancel_button;
+    ProgressBar progressBar;
+    List<String> color = Arrays.asList("Black", "Pin!", "Blue", "Red", "Brown");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_categories);
 
+        //set support action bar
+        toolbar = findViewById(R.id.create_category_toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
         //category select
         GetCategoryFromDB getC = new GetCategoryFromDB();
-        cate_array = getC.getCategory();
+        ArrayList<String> cate_array = getC.getCategory();
 
         Spinner spinner = findViewById(R.id.cate_cate_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateCategories.this, android.R.layout.simple_list_item_1,cate_array);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateCategories.this, android.R.layout.simple_list_item_1, cate_array);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -55,17 +60,34 @@ public class CreateCategories extends AppCompatActivity {
         ImageSpinnerAdapter icon_adapter = new ImageSpinnerAdapter(this, new Integer[]{R.drawable.icon1, R.drawable.icon2, R.drawable.icon3});
         icon_spinner.setAdapter(icon_adapter);
 
+        //confirm or cancel operation
+        progressBar = findViewById(R.id.category_progressbar);
         final String[] text = new String[1];
         final int[] icon = new int[1];
         EditText cate_des = findViewById(R.id.cate_des);
-        cate_done = findViewById(R.id.cate_done);
-        cate_done.setOnClickListener(new View.OnClickListener() {
+        done_button = findViewById(R.id.cate_done);
+        done_button.setOnClickListener(view -> {
+            progressBar.setVisibility(View.VISIBLE);
+            Toast.makeText(view.getContext(), "Category added successfully", Toast.LENGTH_SHORT).show();
+            onBackPressed();
+        });
+
+        cancel_button = findViewById(R.id.cate_cancel);
+        cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                text[0] = spinner.getSelectedItem().toString();     //cate
-                icon[0] = icon_spinner.getSelectedItemPosition();   //icon
-                cate_des.setText(text[0]+"   "+icon[0]);
+            public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                Toast.makeText(v.getContext(), "Canceled Operation", Toast.LENGTH_SHORT).show();
+                onBackPressed();
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -46,7 +46,6 @@
         android:hint="textarea for description"
         android:inputType="textCapSentences|textMultiLine"
         android:maxLength="2000"
-        android:maxLines="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
