@@ -1,6 +1,5 @@
 package com.example.android_final;
 
-
 import java.util.ArrayList;
 
 public class GetCategoryFromDB {

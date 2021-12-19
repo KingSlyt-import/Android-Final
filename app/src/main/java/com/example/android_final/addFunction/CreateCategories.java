@@ -19,8 +19,8 @@ import com.example.android_final.adapter.ImageSpinnerAdapter;
 import com.example.android_final.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;

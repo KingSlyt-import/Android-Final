@@ -17,16 +17,17 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_bar" />
+        android:layout_above="@+id/bottom_bar"
+        android:background="@drawable/border" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#7FA18E"
-        app:itemTextColor="@color/white"
+        android:background="@color/main_theme"
         app:itemIconTint="@drawable/item_checked_color"
+        app:itemTextColor="@color/white"
         app:menu="@menu/menu_bottom"
         app:tabSelectedTextColor="@color/white" />
 </RelativeLayout>
