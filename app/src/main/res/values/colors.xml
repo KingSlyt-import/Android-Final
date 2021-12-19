@@ -11,4 +11,5 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="gadget_color">#90EE90</color>
+    <color name="main_theme">#7FA18E</color>
 </resources>
