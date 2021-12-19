@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
+            android:name=".auth.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".auth.RegisterActivity"
-            android:parentActivityName=".auth.LoginActivity"/>
+            android:parentActivityName=".auth.LoginActivity" />
         <activity
             android:name=".auth.LoginActivity"
             android:exported="true">
@@ -41,9 +44,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
