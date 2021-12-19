@@ -2,13 +2,23 @@ package com.example.android_final.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android_final.R;
+import com.example.android_final.adapter.BubbleAdapter;
+import com.example.android_final.data.Bubble;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +71,34 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
+        List<Bubble> messagesList = new ArrayList<>();
+        messagesList.add(new Bubble(R.drawable.icon1, "AEUGH", "1h00"));
+        messagesList.add(new Bubble(R.drawable.icon2, "AEUGH2", "1h30"));
+        messagesList.add(new Bubble(R.drawable.icon3, "AEUGH3", "1h50"));
+        messagesList.add(new Bubble(R.drawable.icon2, "AEUGH4", "2h00"));
+        RecyclerView bubble_schedule = view.findViewById(R.id.bubble_schedule);
+        bubble_schedule.setHasFixedSize(true);
+
+        BubbleAdapter bubbleAdapter = new BubbleAdapter(getActivity(), messagesList);
+        bubble_schedule.setAdapter(bubbleAdapter);
+        bubble_schedule.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+//        bubble_schedule.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+//            @Override
+//            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+//
+//            }
+//
+//            @Override
+//            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+//
+//            }
+//        });
+        return view;
     }
 }
