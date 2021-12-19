@@ -11,13 +11,22 @@ import android.view.MenuItem;
 import com.example.android_final.adapter.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 //    private TabLayout tab_bar;
     private ViewPager view_pager;
     private BottomNavigationView bottomNavigationView;
+    FirebaseUser firebaseUser;
+    DatabaseReference reference;
 
-      @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
@@ -28,6 +37,23 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter vpa = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         view_pager.setAdapter(vpa);
 
+        //user session
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance("https://android-final-a8b4a-default-rtdb.firebaseio.com/")
+                .getReference("Users").child(firebaseUser.getUid());
+        if (firebaseUser != null) {
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
         //show which page you are in in bottom bar
         view_pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
