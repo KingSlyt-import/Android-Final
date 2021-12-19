@@ -4,59 +4,131 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addFunction.CreateNote">
+    tools:context=".addFunction.CreateCategories">
 
-    <Spinner
-        android:id="@+id/note_cate_spinner"
-        android:layout_width="133dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toEndOf="@+id/note_cate"
-        app:layout_constraintTop_toTopOf="@+id/note_cate" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/note_cate"
-        android:layout_width="99dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
-        android:gravity="center_vertical"
-        android:text="Category"
-        app:layout_constraintStart_toStartOf="@+id/note_title"
-        app:layout_constraintTop_toBottomOf="@+id/note_title" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/create_note_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#2E8B57">
+
+            <TextView
+                android:id="@+id/create_category_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Note"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <EditText
         android:id="@+id/note_title"
-        android:layout_width="249dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="44dp"
-        android:background="@null"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/border"
         android:hint="Title"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:paddingStart="18dp"
+        android:imeOptions="actionDone"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar_layout"
+        tools:ignore="HardcodedText,RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/cate_dir"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="Category"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toStartOf="@+id/note_cate_spinner"
+        app:layout_constraintStart_toStartOf="@+id/note_title"
+        app:layout_constraintTop_toBottomOf="@+id/note_title"
+        tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/note_des"
-        android:layout_width="339dp"
-        android:layout_height="420dp"
-        android:layout_marginTop="36dp"
+        android:id="@+id/note_body"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:layout_weight="1"
-        android:background="@null"
-        android:gravity="top|left"
-        android:hint="textarea for description"
+        android:background="@drawable/border"
+        android:gravity="start"
+        android:hint="Body"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
         android:inputType="textCapSentences|textMultiLine"
-        android:maxLength="2000"
+        android:padding="18dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_cate_spinner"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/note_done"
+        android:layout_width="67dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/gadget_color"
+        android:text="✔"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_body"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/note_cancel"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="#ff726f"
+        android:text="✘"
+        app:layout_constraintEnd_toStartOf="@+id/note_done"
+        app:layout_constraintTop_toTopOf="@+id/note_done"
+        tools:ignore="HardcodedText" />
+
+    <Spinner
+        android:id="@+id/note_cate_spinner"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/cate_dir"
+        app:layout_constraintTop_toTopOf="@+id/cate_dir"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ProgressBar
+        android:id="@+id/note_progressbar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_cate"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintTop_toTopOf="@+id/appbar_layout" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="67dp"
-        android:layout_height="35dp"
-        android:text="✔"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

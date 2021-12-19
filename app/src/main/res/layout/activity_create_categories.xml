@@ -110,7 +110,7 @@
         android:layout_weight="1"
         android:background="@drawable/border"
         android:gravity="start"
-        android:hint="Add description "
+        android:hint="Add description (Optional)"
         android:padding="18dp"
         android:inputType="textCapSentences|textMultiLine"
         android:layout_marginStart="40dp"

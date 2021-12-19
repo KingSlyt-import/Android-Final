@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.temp_main_activity);
+        setContentView(R.layout.main_activity);
 
         bottomNavigationView = findViewById(R.id.bottom_bar);
         view_pager = findViewById(R.id.view_pager);

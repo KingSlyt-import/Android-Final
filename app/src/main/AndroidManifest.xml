@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".ImageSpinnerAdapter"
+            android:name=".adapter.ImageSpinnerAdapter"
             android:exported="false" />
         <activity
             android:name=".addFunction.CreateTask"

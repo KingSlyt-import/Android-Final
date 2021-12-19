@@ -24,8 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimaryDark"
+        android:background="#7FA18E"
         app:itemTextColor="@color/white"
+        app:itemIconTint="@drawable/item_checked_color"
         app:menu="@menu/menu_bottom"
         app:tabSelectedTextColor="@color/white" />
 </RelativeLayout>
