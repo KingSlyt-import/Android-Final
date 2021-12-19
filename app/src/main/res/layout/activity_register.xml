@@ -22,15 +22,18 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="Full Name"
-        android:paddingStart="10dp"
         android:background="@drawable/round_style"
         android:backgroundTint="@color/white"
+        android:ems="10"
+        android:hint="Full Name"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:ignore="HardcodedText,RtlSymmetry"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/email"
@@ -44,10 +47,13 @@
         android:ems="10"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        tools:ignore="HardcodedText,RtlSymmetry"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/password"
@@ -61,10 +67,13 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        tools:ignore="HardcodedText,RtlSymmetry"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/passwordConfirm"
@@ -78,10 +87,13 @@
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:ignore="HardcodedText,RtlSymmetry"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btn_register"
@@ -96,7 +108,8 @@
         android:backgroundTint="#B22222"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordConfirm" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordConfirm"
+        tools:ignore="HardcodedText" />
 
     <ProgressBar
         android:id="@+id/progressBar4"
