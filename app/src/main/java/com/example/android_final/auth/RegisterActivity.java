@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.android_final.MainActivity;
@@ -29,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     Toolbar toolbar;
     EditText username, email, password, passwordConfirm;
     Button btn_register;
+    ProgressBar progressBar;
 
     FirebaseAuth firebaseAuth;
 
@@ -46,16 +48,20 @@ public class RegisterActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        //map values
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         passwordConfirm = findViewById(R.id.passwordConfirm);
         btn_register = findViewById(R.id.btn_register);
+        progressBar = findViewById(R.id.register_progressbar);
 
         //set register activity
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+
                 String txt_username = username.getText().toString();
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
@@ -63,10 +69,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_email)
                         || TextUtils.isEmpty(txt_password) || TextUtils.isEmpty(txt_password_confirm)) {
+                    progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(RegisterActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 } else if (txt_password.length() < 6) {
+                    progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(RegisterActivity.this, "Password length must be at least 6 characters", Toast.LENGTH_SHORT).show();
                 } else if (!txt_password.equals(txt_password_confirm)) {
+                    progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(RegisterActivity.this, "Password not match", Toast.LENGTH_SHORT).show();
                 } else {
                     Register(txt_username, txt_email, txt_password);
@@ -97,6 +106,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                        Toast.makeText(RegisterActivity.this, "Create account successfully", Toast.LENGTH_SHORT).show();
+                                        
                                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
@@ -105,6 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
+                            progressBar.setVisibility(View.INVISIBLE);
                             Toast.makeText(RegisterActivity.this, "You can't register with this email or password", Toast.LENGTH_SHORT).show();
                         }
                     }

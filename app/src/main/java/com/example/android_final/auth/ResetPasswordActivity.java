@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
@@ -16,10 +17,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class ResetPasswordActivity extends AppCompatActivity {
     EditText send_email;
     Button btn_reset;
     Toolbar toolbar;
+    ProgressBar progressBar;
 
     FirebaseAuth firebaseAuth;
     @Override
@@ -29,9 +33,10 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Reset Password");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Reset Password");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        progressBar = findViewById(R.id.forgotPassword_progressbar);
         send_email = findViewById(R.id.send_email);
         btn_reset = findViewById(R.id.btn_reset);
 
@@ -40,6 +45,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
         btn_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+
                 String email = send_email.getText().toString();
 
                 if (email.equals("")) {
@@ -49,10 +56,12 @@ public class ResetPasswordActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
+                                progressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(ResetPasswordActivity.this, "Please check your email", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
                             } else {
-                                String error = task.getException().getMessage();
+                                progressBar.setVisibility(View.INVISIBLE);
+                                String error = Objects.requireNonNull(task.getException()).getMessage();
                                 Toast.makeText(ResetPasswordActivity.this, error, Toast.LENGTH_SHORT).show();
                             }
                         }
