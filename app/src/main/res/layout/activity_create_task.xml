@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateTask">
+    tools:context=".addFunction.CreateTask">
 
     <Spinner
         android:id="@+id/task_cate_spinner"

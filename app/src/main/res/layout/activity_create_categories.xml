@@ -4,99 +4,174 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateCategories">
+    tools:context=".addFunction.CreateCategories">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/create_category_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#2E8B57">
+
+            <TextView
+                android:id="@+id/create_category_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Category"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <EditText
         android:id="@+id/cate_name"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="249dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
-        android:background="@null"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/border"
         android:hint="Enter Name"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:paddingStart="18dp"
+        android:imeOptions="actionDone"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/appbar_layout"
+        tools:ignore="HardcodedText,RtlSymmetry" />
 
     <TextView
         android:id="@+id/cate_dir"
-        android:layout_width="99dp"
+        android:layout_width="100dp"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:gravity="center_vertical"
-        android:hint="Category"
-        android:textAlignment="textStart"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="Category"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toStartOf="@+id/cate_cate_spinner"
         app:layout_constraintStart_toStartOf="@+id/cate_name"
-        app:layout_constraintTop_toBottomOf="@+id/cate_name" />
+        app:layout_constraintTop_toBottomOf="@+id/cate_name"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/cate_icon"
         android:layout_width="99dp"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="Choose Icon"
-        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="@+id/cate_dir"
-        app:layout_constraintTop_toBottomOf="@+id/cate_dir" />
+        app:layout_constraintTop_toBottomOf="@+id/cate_dir"
+        tools:ignore="HardcodedText" />
 
     <Spinner
         android:id="@+id/color_spinner"
-        android:layout_width="133dp"
+        android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
         app:layout_constraintStart_toEndOf="@+id/cate_color"
-        app:layout_constraintTop_toTopOf="@+id/cate_color" />
+        app:layout_constraintTop_toTopOf="@+id/cate_color"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/cate_color"
         android:layout_width="99dp"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="Color"
-        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="@+id/cate_icon"
-        app:layout_constraintTop_toBottomOf="@+id/cate_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/cate_icon"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/cate_des"
-        android:layout_width="249dp"
+        android:layout_width="match_parent"
         android:layout_height="270dp"
         android:layout_marginTop="40dp"
         android:layout_weight="1"
-        android:background="@null"
-        android:gravity="top|left"
-        android:hint="textarea for description"
+        android:background="@drawable/border"
+        android:gravity="start"
+        android:hint="Add description (Optional)"
+        android:padding="18dp"
         android:inputType="textCapSentences|textMultiLine"
-        android:maxLength="2000"
-        android:maxLines="4"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:importantForAutofill="no"
         app:layout_constraintStart_toStartOf="@+id/cate_color"
-        app:layout_constraintTop_toBottomOf="@+id/cate_color" />
+        app:layout_constraintTop_toBottomOf="@+id/cate_color"
+        tools:ignore="HardcodedText" />
 
     <Spinner
         android:id="@+id/icon_spinner"
-        android:layout_width="133dp"
+        android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
         app:layout_constraintStart_toEndOf="@+id/cate_icon"
-        app:layout_constraintTop_toTopOf="@+id/cate_icon" />
+        app:layout_constraintTop_toTopOf="@+id/cate_icon"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/cate_done"
         android:layout_width="67dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/gadget_color"
         android:text="✔"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cate_des"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/cate_cancel"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="#ff726f"
+        android:text="✘"
+        app:layout_constraintEnd_toStartOf="@+id/cate_done"
+        app:layout_constraintTop_toTopOf="@+id/cate_done"
+        tools:ignore="HardcodedText" />
 
     <Spinner
         android:id="@+id/cate_cate_spinner"
-        android:layout_width="133dp"
+        android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
         app:layout_constraintStart_toEndOf="@+id/cate_dir"
-        app:layout_constraintTop_toTopOf="@+id/cate_dir" />
+        app:layout_constraintTop_toTopOf="@+id/cate_dir"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ProgressBar
+        android:id="@+id/category_progressbar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/appbar_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

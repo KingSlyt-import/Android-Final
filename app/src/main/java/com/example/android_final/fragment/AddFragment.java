@@ -1,4 +1,4 @@
-package com.example.android_final;
+package com.example.android_final.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,14 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.android_final.R;
+import com.example.android_final.addFunction.CreateCategories;
+import com.example.android_final.addFunction.CreateNote;
+import com.example.android_final.addFunction.CreateSchedule;
+import com.example.android_final.addFunction.CreateTask;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +34,7 @@ public class AddFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Button btn_add;
+    private FloatingActionButton btn_add;
 
 
 
@@ -70,7 +74,7 @@ public class AddFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add, container, false);
-        btn_add = view.findViewById(R.id.btn_add);
+        btn_add = view.findViewById(R.id.fragment_add_note_addBtn);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
