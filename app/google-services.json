@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "226693100926",
+    "firebase_url": "https://android-final-a8b4a-default-rtdb.firebaseio.com",
     "project_id": "android-final-a8b4a",
     "storage_bucket": "android-final-a8b4a.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "226693100926-fm49jkp1pgq8899t7bug39iv2f80lf3l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android_final",
+            "certificate_hash": "e3ad039ae0f4440759eb330b42f1c3c9bfd822e2"
+          }
+        },
         {
           "client_id": "226693100926-3re3gceipqhrkuejs8r7sgnlou7mr4o5.apps.googleusercontent.com",
           "client_type": 3

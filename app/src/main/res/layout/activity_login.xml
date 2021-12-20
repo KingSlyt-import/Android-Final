@@ -78,6 +78,51 @@
         app:layout_constraintTop_toBottomOf="@+id/password"
         tools:ignore="HardcodedText" />
 
+    <Button
+        android:id="@+id/btn_gg_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_style"
+        android:text="Login with Google"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#B22222"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        tools:ignore="HardcodedText"/>
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/btn_fb_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_gg_login"/>
+
+<!--        <Button-->
+<!--        android:id="@+id/btn_fb_login"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:background="@drawable/round_style"-->
+<!--        android:text="Login with Facebook"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:backgroundTint="#B22222"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btn_gg_login"-->
+<!--        tools:ignore="HardcodedText"/>-->
+
     <TextView
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
@@ -89,7 +134,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_fb_login"
         tools:ignore="HardcodedText" />
 
     <TextView
