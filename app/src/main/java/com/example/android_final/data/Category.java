@@ -6,6 +6,11 @@ public class Category {
     private int color;
     private int picture;
 
+    public Category(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public Category(String title, String description, int color, int picture) {
         this.title = title;
         this.description = description;
@@ -43,5 +48,13 @@ public class Category {
 
     public void setPicture(int picture) {
         this.picture = picture;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

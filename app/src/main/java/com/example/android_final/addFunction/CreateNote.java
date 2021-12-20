@@ -1,10 +1,13 @@
 package com.example.android_final.addFunction;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -16,9 +19,15 @@ import android.widget.Toast;
 
 import com.example.android_final.GetCategoryFromDB;
 import com.example.android_final.R;
+import com.example.android_final.data.Category;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +45,6 @@ public class CreateNote extends AppCompatActivity {
 
     FirebaseFirestore db;
 
-    private ArrayList<String> cate_array;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,18 +55,38 @@ public class CreateNote extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        //category select
-        GetCategoryFromDB getC = new GetCategoryFromDB();
-        cate_array = getC.getCategory();
-        spinner = findViewById(R.id.note_cate_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateNote.this, android.R.layout.simple_list_item_1,cate_array);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
         //firestore config
         db = FirebaseFirestore.getInstance();
         note_title = findViewById(R.id.note_title);
         note_body = findViewById(R.id.note_body);
+
+        //category select
+        ArrayList<String> categories = new ArrayList<>();
+        db.collection("categories")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                categories.add(Objects.requireNonNull(document.get("name")).toString());
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: UNSUCCESSFUL OPERATION");
+                    }
+                });
+
+        spinner = findViewById(R.id.note_cate_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(CreateNote.this, android.R.layout.simple_list_item_1, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         //confirm or cancel operation
         progressBar = findViewById(R.id.note_progressbar);
