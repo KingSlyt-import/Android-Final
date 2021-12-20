@@ -19,7 +19,7 @@
             android:id="@+id/create_category_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#2E8B57">
+            android:background="@color/main_theme">
 
             <TextView
                 android:id="@+id/create_category_title"
