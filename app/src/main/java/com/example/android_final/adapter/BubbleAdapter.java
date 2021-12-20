@@ -24,11 +24,9 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
 
     List<Bubble> messages;
     Context context;
-//    ItemClickListener itemClickListener;
     public BubbleAdapter(Context context,List<Bubble> messages) {
         this.messages = messages;
         this.context = context;
-//        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -41,37 +39,36 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         holder.itemView.setOnClickListener (new View.OnClickListener() {
             CountDownTimer countDownTimer;
             @Override
             public void onClick(View v) {
                 int hour, minute, second;
-                String[] time = holder.bubble_time.getText().toString().split("h");
-                if (time.length>1) {
+                String[] time = holder.bubble_time.getText().toString().split(":");
+                if (time.length==3) {
                     hour = Integer.parseInt(time[0]);
-                    String[] time2 = time[1].toString().split("m");
-                    minute = Integer.parseInt(time2[0]);
-                    second = Integer.parseInt(time2[1]);
+                    minute = Integer.parseInt(time[1]);
+                    second = Integer.parseInt(time[2]);
                 } else {
                     hour = 0;
                     minute = Integer.parseInt(time[0]);
-                    second = 0;
+                    second = Integer.parseInt(time[1]);
                 }
                 long millisInFuture = hour*3600000+minute*60000+second*1000;
                 if (holder.bubble_magic.getText().equals("a")) {
                     holder.bubble.setBackgroundResource(R.drawable.circle_background2);
                     holder.bubble_magic.setText("b");
                     countDownTimer = new CountDownTimer(millisInFuture, 1000) {
-
                         public void onTick(long millisUntilFinished) {
                             long temp_hour = millisUntilFinished/1000/3600;
                             long temp_minute = millisUntilFinished/1000%3600/60;
                             long temp_second = millisUntilFinished/1000%3600%60;
-
-                            holder.bubble_time.setText(temp_hour+ "h" +temp_minute+"m"+temp_second);
+                            if (temp_hour != 0) {
+                                holder.bubble_time.setText(temp_hour+ ":" +temp_minute+":"+temp_second);
+                            } else {
+                                holder.bubble_time.setText(temp_minute+":"+temp_second);
+                            }
                         }
-
                         public void onFinish() {
                             holder.bubble_time.setText("done!");
                         }
