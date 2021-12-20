@@ -73,10 +73,10 @@ public class ListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         List<Bubble> messagesList = new ArrayList<>();
-        messagesList.add(new Bubble(R.drawable.icon1, "AEUGH", "1h00"));
-        messagesList.add(new Bubble(R.drawable.icon2, "AEUGH2", "1h30"));
-        messagesList.add(new Bubble(R.drawable.icon3, "AEUGH3", "1h50"));
-        messagesList.add(new Bubble(R.drawable.icon2, "AEUGH4", "2h00"));
+        messagesList.add(new Bubble(R.drawable.icon1, "AEUGH", "1h00m0"));
+        messagesList.add(new Bubble(R.drawable.icon2, "AEUGH2", "1h30m0"));
+        messagesList.add(new Bubble(R.drawable.icon3, "AEUGH3", "1h50m0"));
+        messagesList.add(new Bubble(R.drawable.icon2, "AEUGH4", "2h00m0"));
         RecyclerView bubble_schedule = view.findViewById(R.id.bubble_schedule);
         bubble_schedule.setHasFixedSize(true);
 
