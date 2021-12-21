@@ -5,7 +5,6 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -70,7 +69,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,6 +172,7 @@ public class LoginActivity extends AppCompatActivity {
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("226693100926-3re3gceipqhrkuejs8r7sgnlou7mr4o5.apps.googleusercontent.com")
+                //.requestEmail(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.android_final.R;
 import com.example.android_final.auth.LoginActivity;
+import com.facebook.login.LoginManager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -40,6 +41,7 @@ public class OptionFragment extends Fragment {
                     case R.id.logout:
                         Toast.makeText(OptionFragment.this.getActivity(), "Logout", Toast.LENGTH_SHORT).show();
                         FirebaseAuth.getInstance().signOut();
+                        LoginManager.getInstance().logOut();
                         startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         return true;
                 }
