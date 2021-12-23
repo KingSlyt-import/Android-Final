@@ -18,6 +18,13 @@
         android:text="a"
         android:visibility="invisible" />
 
+    <TextView
+        android:id="@+id/bubble_documentname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="0dp"
+        android:text="TextView" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

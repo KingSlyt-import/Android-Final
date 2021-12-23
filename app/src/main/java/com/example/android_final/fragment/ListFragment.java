@@ -16,6 +16,12 @@ import android.view.ViewGroup;
 import com.example.android_final.R;
 import com.example.android_final.adapter.BubbleAdapter;
 import com.example.android_final.data.Bubble;
+import com.google.firebase.database.annotations.Nullable;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +41,7 @@ public class ListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    FirebaseFirestore db;
 
     public ListFragment() {
         // Required empty public constructor
@@ -70,35 +77,37 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         List<Bubble> messagesList = new ArrayList<>();
-        messagesList.add(new Bubble(R.drawable.icon1, "AEUGH", "1:00:00"));
-        messagesList.add(new Bubble(R.drawable.icon2, "AEUGH2", "1:30:00"));
-        messagesList.add(new Bubble(R.drawable.icon3, "AEUGH3", "50:00"));
-        messagesList.add(new Bubble(R.drawable.icon2, "AEUGH4", "1:00"));
         RecyclerView bubble_schedule = view.findViewById(R.id.bubble_schedule);
         bubble_schedule.setHasFixedSize(true);
-
         BubbleAdapter bubbleAdapter = new BubbleAdapter(getActivity(), messagesList);
         bubble_schedule.setAdapter(bubbleAdapter);
         bubble_schedule.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-//        bubble_schedule.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-//            @Override
-//            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-//
-//            }
-//
-//            @Override
-//            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-//
-//            }
-//        });
+
+        db = FirebaseFirestore.getInstance();
+        db.collection("schedules")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+
+                            return;
+                        }
+                        messagesList.clear();
+                        for (QueryDocumentSnapshot doc : value) {
+                            if (doc.get("Name")!=null && doc.get("Remain")!=null) {
+                                messagesList.add(new Bubble(R.drawable.icon1, doc.getString("Name"), doc.getString("Remain"), doc.getId()));
+                                bubbleAdapter.notifyDataSetChanged();
+                            }
+
+                        }
+                    }
+
+                });
         return view;
     }
 }

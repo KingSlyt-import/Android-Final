@@ -10,18 +10,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_final.R;
 import com.example.android_final.data.Bubble;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 import java.util.Objects;
 
 public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder> {
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<Bubble> messages;
     Context context;
     public BubbleAdapter(Context context,List<Bubble> messages) {
@@ -86,6 +92,22 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
                         countDownTimer.cancel();
                         holder.bubble.setBackgroundResource(R.drawable.circle_background);
                         holder.bubble_magic.setText("a");
+                        Toast.makeText(context, holder.bubble_time.getText().toString(), Toast.LENGTH_SHORT).show();
+                        DocumentReference updateRemain = db.collection("schedules").document(holder.bubble_documentname.getText().toString());
+                        updateRemain
+                                .update("Remain", holder.bubble_time.getText().toString())
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+
+                                    }
+                                });
                     }
                 }
             }
@@ -97,6 +119,7 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
         holder.bubble_icon.setImageResource(m.getIcon());
         holder.bubble_name.setText(m.getName());
         holder.bubble_time.setText(m.getTime());
+        holder.bubble_documentname.setText(m.getDocument());
     }
 
     @Override
@@ -109,6 +132,7 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
         TextView bubble_name;
         TextView bubble_time;
         ImageView bubble_icon;
+        TextView bubble_documentname;
         LinearLayout bubble;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -116,6 +140,7 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
             bubble_name = itemView.findViewById(R.id.bubble_name);
             bubble_time = itemView.findViewById(R.id.bubble_time);
             bubble_icon = itemView.findViewById(R.id.bubble_icon);
+            bubble_documentname = itemView.findViewById(R.id.bubble_documentname);
             bubble = itemView.findViewById(R.id.bubble);
         }
     }

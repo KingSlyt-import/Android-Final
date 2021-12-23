@@ -10,10 +10,10 @@
     </item>
     <item
         android:id="@+id/menu_schedules"
-        android:title="Schedules (Coming soon)">
+        android:title="Schedules">
     </item>
     <item
         android:id="@+id/menu_tasks"
-        android:title="Tasks (Coming soon)">
+        android:title="Tasks">
     </item>
 </menu>

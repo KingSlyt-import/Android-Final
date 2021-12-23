@@ -6,11 +6,13 @@ public class Bubble implements Serializable {
     private int icon;
     private String name;
     private String time;
+    private String document;
 
-    public Bubble(int icon, String name, String time) {
+    public Bubble(int icon, String name, String time, String document) {
         this.icon = icon;
         this.name = name;
         this.time = time;
+        this.document = document;
     }
 
     public int getIcon() {
@@ -35,5 +37,13 @@ public class Bubble implements Serializable {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
     }
 }
