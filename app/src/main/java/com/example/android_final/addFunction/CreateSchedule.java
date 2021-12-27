@@ -139,8 +139,6 @@ public class CreateSchedule extends AppCompatActivity {
                     schedule.put("Remain", hour+":"+minute+":0");
                 }
 
-
-
                 db.collection("schedules")
                         .add(schedule)
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
