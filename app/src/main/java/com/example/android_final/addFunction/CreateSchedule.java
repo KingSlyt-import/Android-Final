@@ -128,7 +128,7 @@ public class CreateSchedule extends AppCompatActivity {
                     } else {
                         hour = 24-b;
                     }
-                    schedule.put("Remain", hour+":"+minute);
+                    schedule.put("Remain", hour+":"+minute+":0");
                 } else {
                     minute = 60-a*-1;
                     if (b>=0) {
@@ -136,7 +136,7 @@ public class CreateSchedule extends AppCompatActivity {
                     } else {
                         hour = 24-b-1;
                     }
-                    schedule.put("Remain", hour+":"+minute);
+                    schedule.put("Remain", hour+":"+minute+":0");
                 }
 
 

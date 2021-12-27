@@ -92,7 +92,6 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
                         countDownTimer.cancel();
                         holder.bubble.setBackgroundResource(R.drawable.circle_background);
                         holder.bubble_magic.setText("a");
-                        Toast.makeText(context, holder.bubble_time.getText().toString(), Toast.LENGTH_SHORT).show();
                         DocumentReference updateRemain = db.collection("schedules").document(holder.bubble_documentname.getText().toString());
                         updateRemain
                                 .update("Remain", holder.bubble_time.getText().toString())
