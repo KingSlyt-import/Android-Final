@@ -1,6 +1,7 @@
 package com.example.android_final.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.CountDownTimer;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_final.R;
@@ -22,6 +24,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,6 +33,8 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<Bubble> messages;
     Context context;
+    List<ViewHolder> viewHolderList = new ArrayList<>();
+    int check = 0;
     public BubbleAdapter(Context context,List<Bubble> messages) {
         this.messages = messages;
         this.context = context;
@@ -52,23 +57,45 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
                 if (holder.bubble_time.getText().toString().equals("Done!")) {
                     //do nothing
                 } else {
-                    int hour, minute, second;
-                    String[] time = holder.bubble_time.getText().toString().split(":");
-                    if (time.length==3) {
-                        hour = Integer.parseInt(time[0]);
-                        minute = Integer.parseInt(time[1]);
-                        second = Integer.parseInt(time[2]);
-                    } else if (time.length==2) {
-                        hour = 0;
-                        minute = Integer.parseInt(time[0]);
-                        second = Integer.parseInt(time[1]);
-                    } else {
-                        hour = 0;
-                        minute = 0;
-                        second = Integer.parseInt(time[1]);
+//                    if (holder.bubble_magic.getText().equals("a") && countDownTimer!=null) {
+//                        countDownTimer.cancel();
+//                    }
+                    if (holder.bubble_magic.getText().equals("a") && check == 1) {
+                        new AlertDialog.Builder(context)
+                                .setTitle("Alert")
+                                .setMessage("You need to stop the timer before starting a new one!")
+
+                                // Specifying a listener allows you to take an action before dismissing the dialog.
+                                // The dialog is automatically dismissed when a dialog button is clicked.
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // Continue with delete operation
+                                    }
+                                })
+
+                                // A null listener allows the button to dismiss the dialog and take no further action.
+
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
                     }
-                    long millisInFuture = hour*3600000+minute*60000+second*1000;
-                    if (holder.bubble_magic.getText().equals("a")) {
+                    if (holder.bubble_magic.getText().equals("a") && check == 0) {
+                        check = 1;
+                        int hour, minute, second;
+                        String[] time = holder.bubble_time.getText().toString().split(":");
+                        if (time.length==3) {
+                            hour = Integer.parseInt(time[0]);
+                            minute = Integer.parseInt(time[1]);
+                            second = Integer.parseInt(time[2]);
+                        } else if (time.length==2) {
+                            hour = 0;
+                            minute = Integer.parseInt(time[0]);
+                            second = Integer.parseInt(time[1]);
+                        } else {
+                            hour = 0;
+                            minute = 0;
+                            second = Integer.parseInt(time[1]);
+                        }
+                        long millisInFuture = hour*3600000+minute*60000+second*1000;
                         holder.bubble.setBackgroundResource(R.drawable.circle_background2);
                         holder.bubble_magic.setText("b");
                         countDownTimer = new CountDownTimer(millisInFuture, 1000) {
@@ -89,6 +116,7 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
                             }
                         }.start();
                     } else if (holder.bubble_magic.getText().equals("b")) {
+                        check = 0;
                         countDownTimer.cancel();
                         holder.bubble.setBackgroundResource(R.drawable.circle_background);
                         holder.bubble_magic.setText("a");
@@ -98,16 +126,16 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-
                                     }
                                 });
                     }
+
+
                 }
             }
         });

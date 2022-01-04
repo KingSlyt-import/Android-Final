@@ -126,15 +126,15 @@ public class CreateSchedule extends AppCompatActivity {
                     if (b>=0) {
                         hour = b;
                     } else {
-                        hour = 24-b;
+                        hour = 24-Math.abs(b);
                     }
                     schedule.put("Remain", hour+":"+minute+":0");
                 } else {
-                    minute = 60-a*-1;
+                    minute = 60-Math.abs(a)*-1;
                     if (b>=0) {
                         hour = b-1;
                     } else {
-                        hour = 24-b-1;
+                        hour = 24-Math.abs(b)-1;
                     }
                     schedule.put("Remain", hour+":"+minute+":0");
                 }
