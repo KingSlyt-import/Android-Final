@@ -5,6 +5,8 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.ListFragment;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
@@ -81,8 +83,8 @@ public class CreateSchedule extends AppCompatActivity {
         sch_repeat_radio = findViewById(R.id.sch_repeat_radio);
 
         //category select, still need to wait to show all cate
-        GetCategoryFromDB getC = new GetCategoryFromDB();
-        ArrayList<String> cate_array = getC.getCategory();
+        ArrayList<String> cate_array  = new ArrayList<String>();
+        cate_array.add("Root");
         db.collection("categories")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -136,19 +138,16 @@ public class CreateSchedule extends AppCompatActivity {
                     pickmonth2 = ""+pickmonth;
                 }
 
-
-
-
                 if (pickyear < curryear) {
                     Toast.makeText(CreateSchedule.this, "Selected year must be past or same as current year", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     if (pickmonth < currmonth) {
-                        Toast.makeText(CreateSchedule.this, "Selected month must be past or same as current year", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateSchedule.this, "Selected month must be past or same as current month", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         if (pickday < currday) {
-                            Toast.makeText(CreateSchedule.this, "Selected day must be past or same as current year", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateSchedule.this, "Selected day must be past or same as current day", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -159,7 +158,7 @@ public class CreateSchedule extends AppCompatActivity {
                 schedule.put("Category", schedule_cate_spinner.getSelectedItem().toString());
                 schedule.put("TimeStart", timePicker.getHour()+":"+timePicker.getMinute());
                 schedule.put("TimeEnd", timePicker2.getHour()+":"+timePicker2.getMinute());
-                schedule.put("Day", pickday+"/"+pickmonth+"/"+pickyear);
+                schedule.put("Day", pickday+"/"+pickmonth2+"/"+pickyear);
                 if (sch_repeat_radio.isChecked()) {
                     schedule.put("Repeat", "Yes");
                 } else {

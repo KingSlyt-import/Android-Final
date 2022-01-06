@@ -8,9 +8,10 @@
 
     <Spinner
         android:id="@+id/task_cate_spinner"
-        android:layout_width="133dp"
+        android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
+        tools:ignore="SpeakableTextPresentCheck"
         app:layout_constraintStart_toEndOf="@+id/tsk_cate"
         app:layout_constraintTop_toTopOf="@+id/tsk_cate" />
 
@@ -21,6 +22,7 @@
         android:layout_marginTop="24dp"
         android:gravity="center_vertical"
         android:hint="Day"
+        android:paddingStart="18dp"
         app:layout_constraintStart_toStartOf="@+id/tsk_cate"
         app:layout_constraintTop_toBottomOf="@+id/tsk_cate" />
 
@@ -69,22 +71,32 @@
 
     <EditText
         android:id="@+id/tsk_name"
-        android:layout_width="249dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="42dp"
-        android:background="@null"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/border"
         android:hint="Thing to do"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:paddingStart="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,RtlSymmetry" />
 
     <TextView
         android:id="@+id/tsk_cate"
-        android:layout_width="99dp"
+        android:layout_width="100dp"
         android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
         android:text="Category"
+        tools:ignore="HardcodedText"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="@+id/tsk_name"
         app:layout_constraintTop_toBottomOf="@+id/tsk_name" />
 
@@ -93,31 +105,32 @@
         android:layout_width="159dp"
         android:layout_height="45dp"
         android:layout_marginTop="12dp"
+        android:checkedButton="@id/importance1"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@+id/textView22"
         app:layout_constraintTop_toBottomOf="@+id/textView22">
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/importance1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="!" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/importance2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="!!" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/importance3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="!!!" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/done_task"
         android:layout_width="67dp"
         android:layout_height="35dp"
         android:text="✔"
