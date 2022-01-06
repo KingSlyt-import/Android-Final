@@ -56,6 +56,7 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
             public void onClick(View v) {
                 if (holder.bubble_time.getText().toString().equals("Done!")) {
                     //do nothing
+
                 } else {
 //                    if (holder.bubble_magic.getText().equals("a") && countDownTimer!=null) {
 //                        countDownTimer.cancel();
@@ -113,6 +114,24 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
                             }
                             public void onFinish() {
                                 holder.bubble_time.setText("Done!");
+                                check = 0;
+                                holder.bubble.setBackgroundResource(R.drawable.circle_background);
+                                holder.bubble_magic.setText("a");
+                                db.collection("schedules").document(holder.bubble_documentname.getText().toString())
+                                        .delete()
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+
+                                            }
+                                        });
+
                             }
                         }.start();
                     } else if (holder.bubble_magic.getText().equals("b")) {
