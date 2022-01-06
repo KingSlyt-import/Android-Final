@@ -5,11 +5,13 @@
       <map>
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/drawable/round_style.xml" value="0.2037037037037037" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_create_categories.xml" value="0.16893115942028986" />
+        <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_create_note.xml" value="0.14673913043478262" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_home_page.xml" value="0.1" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_register.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_reset_password.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/bar_layout.xml" value="0.11145833333333334" />
+        <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/fragment_notes.xml" value="0.14673913043478262" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/fragment_option.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/icon_spinner_layout.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/main_activity.xml" value="0.11041666666666666" />
@@ -46,16 +48,12 @@
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_add.xml" value="0.264" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_list.xml" value="0.25" />
-        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_notes.xml" value="0.21195652173913043" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_option.xml" value="0.25" />
-        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_schedules.xml" value="0.21195652173913043" />
-        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/fragment_tasks.xml" value="0.21195652173913043" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/home.xml" value="0.264" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/homepage.xml" value="0.19972826086956522" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/icon_spinner_layout.xml" value="0.25" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/item_from_message.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/login.xml" value="0.1793478260869565" />
-        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/main_activity.xml" value="0.21195652173913043" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/layout/temp_main_activity.xml" value="0.264" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/menu/menu_bottom.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/menu/menu_popup.xml" value="0.2388888888888889" />
