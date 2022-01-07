@@ -3,12 +3,28 @@ package com.example.android_final.fragment.order;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android_final.R;
+import com.example.android_final.adapter.BubbleAdapter;
+import com.example.android_final.adapter.NoteAdapter;
+import com.example.android_final.data.Bubble;
+import com.example.android_final.data.Note;
+import com.google.firebase.database.annotations.Nullable;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +41,7 @@ public class NotesFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    FirebaseFirestore db;
 
     public NotesFragment() {
         // Required empty public constructor
@@ -61,6 +78,33 @@ public class NotesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notes, container, false);
+        View view = inflater.inflate(R.layout.fragment_notes, container, false);
+        List<Note> noteList = new ArrayList<>();
+        RecyclerView note_recyclerview = view.findViewById(R.id.note_recyclerview);
+        note_recyclerview.setHasFixedSize(true);
+        NoteAdapter noteAdapter = new NoteAdapter(getActivity(), noteList);
+        note_recyclerview.setAdapter(noteAdapter);
+        note_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        db = FirebaseFirestore.getInstance();
+        db.collection("notes")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            return;
+                        }
+                        noteList.clear();
+                        for (QueryDocumentSnapshot doc : value) {
+                            if (doc.get("title")!=null) {
+                                noteList.add(new Note(doc.getString("title"), doc.getString("body")));
+                                noteAdapter.notifyDataSetChanged();
+                            }
+
+                        }
+                    }
+
+                });
+        return view;
     }
 }
