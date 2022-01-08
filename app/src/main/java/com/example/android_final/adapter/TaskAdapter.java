@@ -1,13 +1,17 @@
 package com.example.android_final.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.CountDownTimer;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -15,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_final.R;
@@ -26,9 +31,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -61,11 +69,67 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                PopupMenu popup = new PopupMenu(holder, view);
-//                MenuInflater inflater = popup.getMenuInflater();
-//                inflater.inflate(R.menu.edit_delete_menu, popup.getMenu());
-//                popup.show();
-                Toast.makeText(context, holder.task_item_name.getText().toString(), Toast.LENGTH_SHORT).show();
+                PopupMenu popup = new PopupMenu(holder.itemView.getContext(), view);
+                MenuInflater inflater = popup.getMenuInflater();
+                inflater.inflate(R.menu.edit_delete_menu, popup.getMenu());
+                popup.show();
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()){
+                            case R.id.edititem:
+                                AlertDialog.Builder builder = new AlertDialog.Builder(holder.itemView.getContext());
+                                builder.setTitle("Editing task");
+                                LayoutInflater inflater = LayoutInflater.from(holder.itemView.getContext());
+                                View dialogView = inflater.inflate(R.layout.edit_task, null);
+                                builder.setView(dialogView);
+                                EditText edit_task_name = dialogView.findViewById(R.id.edit_task_name);
+                                EditText edit_task_note = dialogView.findViewById(R.id.edit_task_note);
+                                edit_task_name.setText(holder.task_item_name.getText().toString());
+                                edit_task_note.setText(holder.task_item_body.getText().toString());
+                                builder
+                                        .setPositiveButton("Done", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            Map<String, Object> data = new HashMap<>();
+                                            data.put("Name", edit_task_name.getText().toString());
+                                            data.put("Note", edit_task_note.getText().toString());
+
+                                            db.collection("tasks").document(m.getDocument())
+                                                    .set(data, SetOptions.merge());
+                                        }
+                                    })
+                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        }
+                                    });
+                                AlertDialog dialog = builder.create();
+                                dialog.show();
+                                return true;
+                            case R.id.deleteitem:
+                                db.collection("tasks")
+                                        .document(m.getDocument())
+                                        .delete()
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+
+                                            }
+                                        });
+                                return true;
+                        }
+                        return false;
+                    }
+                });
+//                Toast.makeText(context, holder.task_item_name.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
 

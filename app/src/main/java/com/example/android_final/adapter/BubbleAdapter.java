@@ -6,10 +6,14 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +27,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder> {
@@ -51,10 +58,47 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+
+        final Bubble m = messages.get(position);
+        if(m==null)
+            return;
+        holder.bubble_icon.setImageResource(m.getIcon());
+        holder.bubble_name.setText(m.getName());
+        holder.bubble_time.setText(m.getTime());
+        holder.bubble_documentname.setText(m.getDocument());
+
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(context, holder.bubble_name.getText().toString(), Toast.LENGTH_SHORT).show();
+                PopupMenu popup = new PopupMenu(holder.itemView.getContext(), view);
+                MenuInflater inflater = popup.getMenuInflater();
+                inflater.inflate(R.menu.delete_menu, popup.getMenu());
+                popup.show();
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()){
+                            case R.id.deleteitemonly:
+                                db.collection("schedules")
+                                        .document(m.getDocument())
+                                        .delete()
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+
+                                            }
+                                        });
+                                return true;
+                        }
+                        return false;
+                    }
+                });
                 return true;
             }
         });
@@ -167,14 +211,6 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
                 }
             }
         });
-
-        final Bubble m = messages.get(position);
-        if(m==null)
-            return;
-        holder.bubble_icon.setImageResource(m.getIcon());
-        holder.bubble_name.setText(m.getName());
-        holder.bubble_time.setText(m.getTime());
-        holder.bubble_documentname.setText(m.getDocument());
     }
 
     @Override

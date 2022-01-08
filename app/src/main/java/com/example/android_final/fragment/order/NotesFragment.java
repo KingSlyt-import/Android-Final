@@ -91,13 +91,14 @@ public class NotesFragment extends Fragment {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value,
                                         @Nullable FirebaseFirestoreException e) {
+                        noteList.clear();
+                        noteAdapter.notifyDataSetChanged();
                         if (e != null) {
                             return;
                         }
-                        noteList.clear();
                         for (QueryDocumentSnapshot doc : value) {
                             if (doc.get("title")!=null) {
-                                noteList.add(new Note(doc.getString("title"), doc.getString("body")));
+                                noteList.add(new Note(doc.getString("title"), doc.getString("body"), doc.getId()));
                                 noteAdapter.notifyDataSetChanged();
                             }
 

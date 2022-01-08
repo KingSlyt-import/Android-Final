@@ -3,31 +3,14 @@ package com.example.android_final.data;
 import java.io.Serializable;
 
 public class Note implements Serializable {
-    private int icon;
     private String name;
     private String body;
     private String document;
 
-    public Note(String name, String body) {
-        this.icon = 0;
-        this.name = name;
-        this.body = body;
-        this.document = "";
-    }
-
-    public Note(int icon, String name, String body, String document) {
-        this.icon = icon;
+    public Note(String name, String body, String document) {
         this.name = name;
         this.body = body;
         this.document = document;
-    }
-
-    public int getIcon() {
-        return icon;
-    }
-
-    public void setIcon(int icon) {
-        this.icon = icon;
     }
 
     public String getName() {

@@ -90,11 +90,12 @@ public class SchedulesFragment extends Fragment {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value,
                                         @Nullable FirebaseFirestoreException e) {
+                        messagesList.clear();
+                        bubbleAdapter.notifyDataSetChanged();
                         if (e != null) {
 
                             return;
                         }
-                        messagesList.clear();
                         for (QueryDocumentSnapshot doc : value) {
                             if (doc.get("Name")!=null && doc.get("Remain")!=null) {
                                 messagesList.add(new Bubble(R.drawable.icon1, doc.getString("Name"), doc.getString("Remain"), doc.getId()));
