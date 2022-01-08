@@ -32,9 +32,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/task_item_completion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+<!--        <CheckBox-->
+<!--            android:id="@+id/task_item_completion"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"></CheckBox>-->
+
+                <RadioGroup
+                    android:id="@+id/task_item_radiogroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.example.android_final.custom.CustomRadioButton
+                        android:id="@+id/task_item_completion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
     </LinearLayout>
 </LinearLayout>

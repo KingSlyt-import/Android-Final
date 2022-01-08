@@ -50,6 +50,15 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(context, holder.bubble_name.getText().toString(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
         holder.itemView.setOnClickListener (new View.OnClickListener() {
             CountDownTimer countDownTimer;
             @Override

@@ -55,12 +55,13 @@ public class CreateTask extends AppCompatActivity {
     private EditText tsk_note;
     private Button done_task;
     FirebaseFirestore db;
+    int a = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
-
         tsk_name = findViewById(R.id.tsk_name);
         datePicker2 = findViewById(R.id.datePicker2);
         radioGroup = findViewById(R.id.tsk_imp);
@@ -106,7 +107,28 @@ public class CreateTask extends AppCompatActivity {
                     Toast.makeText(CreateTask.this, "Cannot create task with empty name", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                //check existed name but it doesn't work for some reason
 
+//                db.collection("tasks")
+//                        .whereEqualTo("Name", tsk_name.getText().toString())
+//                        .get()
+//                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                if (task.isSuccessful()) {
+//                                    a=1;
+//                                    Toast.makeText(CreateTask.this, "Schedule needs a unique name", Toast.LENGTH_SHORT).show();
+//                                    return;
+//                                } else {
+//
+//                                }
+//                            }
+//                        });
+//                Log.d(TAG, "avalue: "+a);
+//                if (a!=0) {
+//                    a=0;
+//                    return;
+//                }
                 LocalDate localDate = LocalDate.now();
                 int currday = localDate.getDayOfMonth();
                 int currmonth = localDate.getMonthValue();
@@ -152,7 +174,7 @@ public class CreateTask extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(@NonNull DocumentReference documentReference) {
-                                Toast.makeText(CreateTask.this, "Schedule added successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateTask.this, "Task added successfully", Toast.LENGTH_SHORT).show();
                                 onBackPressed();
                             }
                         })

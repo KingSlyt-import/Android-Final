@@ -90,13 +90,14 @@ public class TasksFragment extends Fragment {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value,
                                         @Nullable FirebaseFirestoreException e) {
+                        taskList.clear();
+                        taskAdapter.notifyDataSetChanged();
                         if (e != null) {
                             return;
                         }
-                        taskList.clear();
                         for (QueryDocumentSnapshot doc : value) {
                             if (doc.get("Name")!=null) {
-                                taskList.add(new Task(doc.getString("Name"), doc.getString("Importance"), doc.getString("Day"), doc.getString("Note")));
+                                taskList.add(new Task(doc.getString("Name"), doc.getString("Importance"), doc.getString("Day"), doc.getString("Note"), doc.getId(), false));
                                 taskAdapter.notifyDataSetChanged();
                             }
                         }

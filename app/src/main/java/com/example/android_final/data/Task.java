@@ -7,16 +7,36 @@ public class Task implements Serializable {
     private String importance;
     private String day;
     private String body;
+    private String document;
+    private boolean checked;
 
-    public Task(String name, String importance, String day, String body) {
+    public Task(String name, String importance, String day, String body, String document, boolean checked) {
         this.name = name;
         this.importance = importance;
         this.day = day;
         this.body = body;
+        this.document = document;
+        this.checked = checked;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 
     public String getBody() {
         return body;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
     }
 
     public void setBody(String body) {
