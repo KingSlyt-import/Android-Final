@@ -58,22 +58,28 @@
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/menu/menu_bottom.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/menu/menu_popup.xml" value="0.2388888888888889" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final/app/src/main/res/menu/nav_menu.xml" value="0.25" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/activity_create_categories.xml" value="0.1621376811594203" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/activity_create_note.xml" value="0.20471014492753623" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/activity_create_schedule.xml" value="0.20471014492753623" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/activity_create_task.xml" value="0.264" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/activity_notification_medium.xml" value="0.20471014492753623" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/alarm_item.xml" value="0.1480978260869565" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/bubble_item.xml" value="0.20471014492753623" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/edit_task.xml" value="0.17527173913043478" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/fragment_add.xml" value="0.20471014492753623" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/fragment_alarm.xml" value="0.1480978260869565" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/fragment_home.xml" value="0.20471014492753623" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/fragment_list.xml" value="0.20471014492753623" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/fragment_notes.xml" value="0.20471014492753623" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/fragment_schedules.xml" value="0.20471014492753623" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/fragment_tasks.xml" value="0.20471014492753623" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/main_activity.xml" value="0.1480978260869565" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/note_item.xml" value="0.4" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/layout/task_item.xml" value="0.4" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/menu/delete_menu.xml" value="0.25" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/menu/edit_delete_menu.xml" value="0.25" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/menu/menu_bottom.xml" value="0.25" />
+        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/menu/nav_menu.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/round_style.xml" value="0.33707865168539325" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1766304347826087" />
         <entry key="app/src/main/res/layout/item_from_message.xml" value="0.1766304347826087" />

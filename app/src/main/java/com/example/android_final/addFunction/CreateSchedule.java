@@ -5,14 +5,11 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.fragment.app.ListFragment;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.RingtoneManager;
@@ -30,7 +27,6 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.android_final.GetCategoryFromDB;
 import com.example.android_final.Notify.NotificationReceiver;
 import com.example.android_final.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,10 +41,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -72,7 +65,7 @@ public class CreateSchedule extends AppCompatActivity {
 
         createNotificationChannel();
 
-        timePicker = findViewById(R.id.timePicker);
+        timePicker = findViewById(R.id.AlarmTimePicker);
         timePicker2 = findViewById(R.id.timePicker2);
         timePicker.setIs24HourView(true);
         timePicker2.setIs24HourView(true);

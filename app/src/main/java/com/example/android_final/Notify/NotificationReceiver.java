@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.PowerManager;
 
+import com.example.android_final.MainActivity;
 import com.example.android_final.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -24,15 +25,16 @@ public class NotificationReceiver extends BroadcastReceiver {
         text = intent.getStringExtra("text");
         db = FirebaseFirestore.getInstance();
 //        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-//        Intent tapnotifi = new Intent(context, NotificationMedium.class);
-//        tapnotifi.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        PendingIntent resultPendingIntent = PendingIntent.getActivities(context, 1, new Intent[]{tapnotifi}, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent tapnotifi = new Intent(context, MainActivity.class);
+        tapnotifi.putExtra("des", "schedule");
+        tapnotifi.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent resultPendingIntent = PendingIntent.getActivities(context, 1, new Intent[]{tapnotifi}, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder notification = new NotificationCompat.Builder(context, "ec")
                 .setSmallIcon(R.drawable.ic_clock)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setAutoCancel(true)
-//                .setContentIntent(resultPendingIntent)
+                .setContentIntent(resultPendingIntent)
 //                .setSound(uri)
 //                .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)
                 //.setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.ayaya))
