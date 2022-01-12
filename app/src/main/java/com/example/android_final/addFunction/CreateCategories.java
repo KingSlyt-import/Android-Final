@@ -115,13 +115,9 @@ public class CreateCategories extends AppCompatActivity {
         });
 
         cancel_button = findViewById(R.id.cate_cancel);
-        cancel_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                Toast.makeText(v.getContext(), "Canceled operation", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-            }
+        cancel_button.setOnClickListener(v -> {
+            Toast.makeText(v.getContext(), "Canceled operation", Toast.LENGTH_SHORT).show();
+            onBackPressed();
         });
     }
 

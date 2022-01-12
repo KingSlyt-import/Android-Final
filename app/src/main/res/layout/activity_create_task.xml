@@ -6,142 +6,177 @@
     android:layout_height="match_parent"
     tools:context=".addFunction.CreateTask">
 
+    <Button
+        android:id="@+id/task_done"
+        android:layout_width="67dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/gadget_color"
+        android:text="✔"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/task_cancel"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/task_cancel"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="#ff726f"
+        android:text="✘"
+        app:layout_constraintEnd_toStartOf="@+id/task_done"
+        app:layout_constraintTop_toBottomOf="@+id/switch1"
+        tools:ignore="HardcodedText" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/create_task_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/main_theme">
+
+            <TextView
+                android:id="@+id/create_category_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Task"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <Spinner
         android:id="@+id/task_cate_spinner"
         android:layout_width="150dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:layout_marginStart="20dp"
-        tools:ignore="SpeakableTextPresentCheck"
         app:layout_constraintStart_toEndOf="@+id/tsk_cate"
         app:layout_constraintTop_toTopOf="@+id/tsk_cate" />
 
     <TextView
         android:id="@+id/sch_day2"
-        android:layout_width="249dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:paddingStart="10dp"
         android:gravity="center_vertical"
-        android:hint="Day"
-        android:paddingStart="18dp"
+        android:text="Date"
         app:layout_constraintStart_toStartOf="@+id/tsk_cate"
-        app:layout_constraintTop_toBottomOf="@+id/tsk_cate" />
+        app:layout_constraintTop_toBottomOf="@+id/tsk_cate"
+        tools:ignore="HardcodedText,RtlSymmetry" />
 
     <DatePicker
         android:id="@+id/datePicker2"
-        android:layout_width="250dp"
-        android:layout_height="129dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="68dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/sch_day2"
-        app:layout_constraintTop_toBottomOf="@+id/sch_day2" />
-
-    <EditText
-        android:id="@+id/tsk_note"
-        android:layout_width="279dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="24dp"
-        android:background="@null"
-        android:hint="Add note"
-        app:layout_constraintStart_toStartOf="@+id/textView24"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="81dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center_vertical"
-        android:text="Complete"
-        app:layout_constraintStart_toStartOf="@+id/tsk_imp"
-        app:layout_constraintTop_toBottomOf="@+id/tsk_imp" />
+        app:layout_constraintStart_toEndOf="@+id/sch_day2"
+        app:layout_constraintTop_toTopOf="@+id/sch_day2" />
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="249dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:gravity="center_vertical"
         android:text="Important Level"
-        app:layout_constraintStart_toStartOf="@+id/datePicker2"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker2" />
+        app:layout_constraintStart_toStartOf="@+id/sch_day2"
+        app:layout_constraintTop_toBottomOf="@+id/datePicker2"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/tsk_name"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
+        android:paddingStart="10dp"
         android:background="@drawable/border"
         android:hint="Thing to do"
-        android:imeOptions="actionDone"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:paddingStart="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,RtlSymmetry" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar_layout"
+        tools:ignore="Autofill,HardcodedText,RtlSymmetry" />
 
     <TextView
         android:id="@+id/tsk_cate"
         android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:paddingStart="10dp"
+        android:gravity="center_vertical"
         android:text="Category"
-        tools:ignore="HardcodedText"
-        android:textSize="18sp"
-        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="@+id/tsk_name"
-        app:layout_constraintTop_toBottomOf="@+id/tsk_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tsk_name"
+        tools:ignore="HardcodedText,RtlSymmetry" />
 
     <RadioGroup
         android:id="@+id/tsk_imp"
-        android:layout_width="159dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:checkedButton="@id/importance1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/textView22"
-        app:layout_constraintTop_toBottomOf="@+id/textView22">
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintStart_toEndOf="@+id/textView22"
+        app:layout_constraintTop_toTopOf="@+id/textView22">
 
         <RadioButton
-            android:id="@+id/importance1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="!" />
+            android:id="@+id/radioButton3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="!"
+            tools:ignore="HardcodedText" />
 
         <RadioButton
-            android:id="@+id/importance2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="!!" />
+            android:id="@+id/radioButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="!!"
+            tools:ignore="HardcodedText" />
 
         <RadioButton
-            android:id="@+id/importance3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="!!!" />
+            android:id="@+id/radioButton2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="!!!"
+            tools:ignore="HardcodedText" />
     </RadioGroup>
 
-    <Button
-        android:id="@+id/done_task"
-        android:layout_width="67dp"
-        android:layout_height="35dp"
-        android:text="✔"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:minHeight="48dp"
+        android:text="Captcha"
+        app:layout_constraintStart_toStartOf="@+id/textView22"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
-    <RadioButton
-        android:id="@+id/tsk_complete"
-        android:layout_width="39dp"
-        android:layout_height="48dp"
-        app:layout_constraintStart_toEndOf="@+id/textView24"
-        app:layout_constraintTop_toTopOf="@+id/textView24" />
+    <ProgressBar
+        android:id="@+id/create_task_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/appbar_layout"
+        tools:visibility="invisible" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

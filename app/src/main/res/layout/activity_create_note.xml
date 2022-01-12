@@ -37,7 +37,7 @@
     <EditText
         android:id="@+id/note_title"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
@@ -91,7 +91,7 @@
     <Button
         android:id="@+id/note_done"
         android:layout_width="67dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/gadget_color"
@@ -103,7 +103,7 @@
     <Button
         android:id="@+id/note_cancel"
         android:layout_width="70dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="15dp"
         android:backgroundTint="#ff726f"
         android:text="✘"
