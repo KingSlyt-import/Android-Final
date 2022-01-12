@@ -38,6 +38,7 @@ public class CreateTask extends AppCompatActivity {
     private Spinner task_cate_spinner;
     private DatePicker datePicker2;
     private RadioGroup radioGroup;
+    private RadioButton firstRadio;
     private RadioButton importance;
     private ProgressBar progressBar;
     FirebaseFirestore db;
@@ -51,6 +52,9 @@ public class CreateTask extends AppCompatActivity {
         datePicker2 = findViewById(R.id.datePicker2);
         radioGroup = findViewById(R.id.tsk_imp);
         task_cate_spinner= findViewById(R.id.task_cate_spinner);
+
+        firstRadio = findViewById(R.id.radioButton3);
+        firstRadio.setChecked(true);
 
         //set support action bar
         Toolbar toolbar = findViewById(R.id.create_task_toolbar);
