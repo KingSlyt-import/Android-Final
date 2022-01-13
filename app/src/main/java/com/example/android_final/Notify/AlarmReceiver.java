@@ -24,19 +24,6 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // Build notification based on Intent
         String document = intent.getStringExtra("document");
-//        db.collection("alarms").document(document).update("rung","yes")
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//
-//                    }
-//                });
         String temp = intent.getStringExtra("signal");
         Intent intent1 = new Intent(context, Audio.class);
         intent1.putExtra("signal", temp);
