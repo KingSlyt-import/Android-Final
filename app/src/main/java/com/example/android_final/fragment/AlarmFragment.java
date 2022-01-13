@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import com.example.android_final.adapter.BubbleAdapter;
 import com.example.android_final.addFunction.CreateSchedule;
 import com.example.android_final.data.Alarm;
 import com.example.android_final.data.Bubble;
+import com.example.android_final.data.Task;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.annotations.Nullable;
@@ -38,9 +40,13 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.w3c.dom.Text;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -103,6 +109,7 @@ public class AlarmFragment extends Fragment {
         //create alarm
         db = FirebaseFirestore.getInstance();
         Button setalarm = view.findViewById(R.id.setalarm);
+        TextView no_alarm = view.findViewById(R.id.no_alarm);
 //        Button stopalarm = view.findViewById(R.id.stopalarm);
         TimePicker AlarmTimePicker = view.findViewById(R.id.AlarmTimePicker);
         AlarmTimePicker.setIs24HourView(true);
@@ -119,6 +126,7 @@ public class AlarmFragment extends Fragment {
         bubble_schedule.addItemDecoration(dividerItemDecoration);
 
         db = FirebaseFirestore.getInstance();
+        TextView youralarm = view.findViewById(R.id.youralarm);
         db.collection("alarms")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -126,45 +134,83 @@ public class AlarmFragment extends Fragment {
                                         @Nullable FirebaseFirestoreException e) {
                         messagesList.clear();
                         bubbleAdapter.notifyDataSetChanged();
+                        if (messagesList.size()!=0) {
+                            no_alarm.setText("");
+                        } else {
+                            no_alarm.setText("You don't have any alarm!");
+                        }
+                        if (messagesList.size()!=0) {
+                            youralarm.setText("Your alarm:");
+                        } else {
+                            youralarm.setText("");
+                        }
                         if (e != null) {
                             return;
                         }
                         for (QueryDocumentSnapshot doc : value) {
                             if (doc.get("time")!=null && doc.getString("randomID")!=null) {
                                 messagesList.add(new Alarm(doc.getString("time"), doc.getString("randomID"), doc.getId(), doc.getString("rung"), doc.getString("checked")));
+                                Collections.sort(messagesList, new Comparator<Alarm>() {
+                                    @Override
+                                    public int compare(Alarm task, Alarm t1) {
+                                        return task.getTime().compareTo(t1.getTime());
+                                    }
+                                });
+                                if (messagesList.size()!=0) {
+                                    no_alarm.setText("");
+                                } else {
+                                    no_alarm.setText("You don't have any alarm!");
+                                }
                                 bubbleAdapter.notifyDataSetChanged();
+                                if (messagesList.size()!=0) {
+                                    youralarm.setText("Your alarm:");
+                                } else {
+                                    youralarm.setText("");
+                                }
                             }
                         }
                     }
-
                 });
 
         setalarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int temp = 0;
                 int minute = AlarmTimePicker.getMinute();
                 int hour = AlarmTimePicker.getHour();
                 int randomID = (int)Math.floor(Math.random()*(100-10+1)+10);
-                Map<String, Object> alarm = new HashMap<>();
-                alarm.put("time", hour+":"+(minute<10? "0"+minute : minute));
-                alarm.put("randomID", randomID+"");
-                alarm.put("rung", "no");
-                alarm.put("checked", "no");
+
+                //validate
+                for (Alarm a: messagesList) {
+                    if (a.getTime().equals((hour<10? "0"+hour : hour)+":"+(minute<10? "0"+minute : minute))) {
+                        temp = 1;
+                    }
+                }
+
+                if (temp == 1) {
+                    Toast.makeText(getContext(), "Alarm already exits!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Map<String, Object> alarm = new HashMap<>();
+                    alarm.put("time", (hour<10? "0"+hour : hour)+":"+(minute<10? "0"+minute : minute));
+                    alarm.put("randomID", randomID+"");
+                    alarm.put("rung", "no");
+                    alarm.put("checked", "no");
 //                alarm.put("rung", "no");
-                db.collection("alarms")
-                        .add(alarm)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(@NonNull DocumentReference documentReference) {
-                                Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getContext(), "Error, try again", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    db.collection("alarms")
+                            .add(alarm)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(@NonNull DocumentReference documentReference) {
+//                                    Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getContext(), "Error, try again", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
             }
         });
 

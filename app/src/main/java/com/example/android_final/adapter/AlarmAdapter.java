@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -71,6 +72,11 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
         if(m==null)
             return;
         holder.alarm_time.setText(m.getTime());
+        if (position%2==1) {
+            holder.alarm_item_bg.setBackgroundColor(Color.parseColor("#d2f7dc"));
+        } else {
+            holder.alarm_item_bg.setBackgroundColor(Color.parseColor("#ffffff"));
+        }
         if (m.getChecked().equals("yes")) {
             if (holder.alarm_onoroff.isChecked()) {
 

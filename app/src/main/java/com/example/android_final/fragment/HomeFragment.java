@@ -26,6 +26,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -50,6 +52,7 @@ public class HomeFragment extends Fragment {
     private TextView home_month;
     private TextView home_year;
     private TextView display_tasks;
+    private TextView home_congrat;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -98,6 +101,7 @@ public class HomeFragment extends Fragment {
         home_month.setText(month);
         home_year.setText(year);
         display_tasks = view.findViewById(R.id.display_tasks);
+        home_congrat = view.findViewById(R.id.home_congrat);
 
         List<Task> taskList = new ArrayList<>();
         RecyclerView task_recyclerview = view.findViewById(R.id.home_task_recyclerview);
@@ -124,10 +128,23 @@ public class HomeFragment extends Fragment {
                         for (QueryDocumentSnapshot doc : value) {
                             if (doc.get("Name")!=null) {
                                 taskList.add(new Task(doc.getString("Name"), doc.getString("Importance"), doc.getString("Day"), doc.getString("Note"), doc.getId(), false));
+                                Collections.sort(taskList, new Comparator<Task>() {
+                                    @Override
+                                    public int compare(Task task, Task t1) {
+                                        return task.getImportance().compareTo(t1.getImportance());
+                                    }
+                                });
+                                Collections.reverse(taskList);
                                 taskAdapter.notifyDataSetChanged();
                             }
                         }
-                        display_tasks.setText("You have "+((taskList.size()>1) ? taskList.size()+" tasks today": taskList.size()+" task today"));
+                        if (taskList.size()>0) {
+                            display_tasks.setText("You have "+taskList.size()+" tasks today!");
+                            home_congrat.setText("");
+                        } else {
+                            home_congrat.setText("Congratulation! You have no task today!!");
+                            display_tasks.setText("");
+                        }
                     }
                 });
         return view;

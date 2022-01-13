@@ -1,13 +1,16 @@
 package com.example.android_final.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +48,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         return holder;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Note m = notes.get(position);
@@ -52,6 +56,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             return;
         holder.note_item_name.setText(m.getName());
         holder.note_item_text.setText(m.getBody());
+        if (position%2==1) {
+            holder.note_item.setBackgroundColor(Color.parseColor("#d2f7dc"));
+        } else {
+            holder.note_item.setBackgroundColor(Color.parseColor("#ffffff"));
+        }
         //click item
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,10 +142,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView note_item_name;
         TextView note_item_text;
+        LinearLayout note_item;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             note_item_name = itemView.findViewById(R.id.note_item_name);
             note_item_text = itemView.findViewById(R.id.note_item_text);
+            note_item = itemView.findViewById(R.id.note_item);
         }
     }
 }
