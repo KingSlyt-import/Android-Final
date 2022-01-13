@@ -3,6 +3,7 @@ package com.example.android_final.fragment.order;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -85,6 +86,11 @@ public class NotesFragment extends Fragment {
         NoteAdapter noteAdapter = new NoteAdapter(getActivity(), noteList);
         note_recyclerview.setAdapter(noteAdapter);
         note_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //create line to seperate each item
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        note_recyclerview.addItemDecoration(dividerItemDecoration);
+
         db = FirebaseFirestore.getInstance();
         db.collection("notes")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
