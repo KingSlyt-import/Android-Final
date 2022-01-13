@@ -42,7 +42,7 @@
     <EditText
         android:id="@+id/tsk_note"
         android:layout_width="279dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:background="@null"
         android:hint="Add note"
@@ -74,6 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/border"
         android:hint="Thing to do"
@@ -112,34 +113,34 @@
 
         <RadioButton
             android:id="@+id/importance1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:text="!" />
 
         <RadioButton
             android:id="@+id/importance2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:text="!!" />
 
         <RadioButton
             android:id="@+id/importance3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:text="!!!" />
     </RadioGroup>
 
     <Button
         android:id="@+id/done_task"
-        android:layout_width="67dp"
-        android:layout_height="35dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:text="✔"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioButton
         android:id="@+id/tsk_complete"
-        android:layout_width="39dp"
+        android:layout_width="48dp"
         android:layout_height="48dp"
         app:layout_constraintStart_toEndOf="@+id/textView24"
         app:layout_constraintTop_toTopOf="@+id/textView24" />
