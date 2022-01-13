@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.android_final.R;
 import com.example.android_final.adapter.NoteAdapter;
@@ -80,6 +81,7 @@ public class TasksFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tasks, container, false);
+        TextView no_task = view.findViewById(R.id.no_task);
         List<Task> taskList = new ArrayList<>();
         RecyclerView task_recyclerview = view.findViewById(R.id.task_recyclerview);
         task_recyclerview.setHasFixedSize(true);
@@ -94,6 +96,11 @@ public class TasksFragment extends Fragment {
                                         @Nullable FirebaseFirestoreException e) {
                         taskList.clear();
                         taskAdapter.notifyDataSetChanged();
+                        if (taskList.size()!=0) {
+                            no_task.setText("");
+                        } else {
+                            no_task.setText("You don't have any alarm!");
+                        }
                         if (e != null) {
                             return;
                         }
@@ -108,6 +115,11 @@ public class TasksFragment extends Fragment {
                                 });
                                 Collections.reverse(taskList);
                                 taskAdapter.notifyDataSetChanged();
+                                if (taskList.size()!=0) {
+                                    no_task.setText("");
+                                } else {
+                                    no_task.setText("You don't have any alarm!");
+                                }
                             }
                         }
                     }

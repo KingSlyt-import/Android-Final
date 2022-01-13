@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.android_final.R;
 import com.example.android_final.adapter.BubbleAdapter;
@@ -79,6 +80,7 @@ public class NotesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
+        TextView no_note = view.findViewById(R.id.no_note);
         List<Note> noteList = new ArrayList<>();
         RecyclerView note_recyclerview = view.findViewById(R.id.note_recyclerview);
         note_recyclerview.setHasFixedSize(true);
@@ -93,6 +95,11 @@ public class NotesFragment extends Fragment {
                                         @Nullable FirebaseFirestoreException e) {
                         noteList.clear();
                         noteAdapter.notifyDataSetChanged();
+                        if (noteList.size()!=0) {
+                            no_note.setText("");
+                        } else {
+                            no_note.setText("You don't have any note!");
+                        }
                         if (e != null) {
                             return;
                         }
@@ -100,6 +107,11 @@ public class NotesFragment extends Fragment {
                             if (doc.get("title")!=null) {
                                 noteList.add(new Note(doc.getString("title"), doc.getString("body"), doc.getId()));
                                 noteAdapter.notifyDataSetChanged();
+                                if (noteList.size()!=0) {
+                                    no_note.setText("");
+                                } else {
+                                    no_note.setText("You don't have any note!");
+                                }
                             }
 
                         }

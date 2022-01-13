@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.android_final.R;
 import com.example.android_final.adapter.BubbleAdapter;
@@ -83,6 +84,7 @@ public class SchedulesFragment extends Fragment {
         // Inflate the layout for this fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_schedules, container, false);
+        TextView no_schedule = view.findViewById(R.id.no_schedule);
         List<Bubble> messagesList = new ArrayList<>();
         RecyclerView bubble_schedule = view.findViewById(R.id.bubble_schedule2);
         bubble_schedule.setHasFixedSize(true);
@@ -98,6 +100,11 @@ public class SchedulesFragment extends Fragment {
                                         @Nullable FirebaseFirestoreException e) {
                         messagesList.clear();
                         bubbleAdapter.notifyDataSetChanged();
+                        if (messagesList.size()!=0) {
+                            no_schedule.setText("");
+                        } else {
+                            no_schedule.setText("You don't have any alarm!");
+                        }
                         if (e != null) {
 
                             return;
@@ -107,6 +114,11 @@ public class SchedulesFragment extends Fragment {
                                 //Integer.parseInt(doc.getString("Icon"))
                                 messagesList.add(new Bubble(0, doc.getString("Name"), doc.getString("Remain"), doc.getId()));
                                 bubbleAdapter.notifyDataSetChanged();
+                                if (messagesList.size()!=0) {
+                                    no_schedule.setText("");
+                                } else {
+                                    no_schedule.setText("You don't have any alarm!");
+                                }
                             }
                         }
                     }

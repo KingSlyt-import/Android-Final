@@ -79,22 +79,25 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()){
                             case R.id.deleteitemonly:
-                                check = 0;
-                                db.collection("schedules")
-                                        .document(m.getDocument())
-                                        .delete()
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
+                                if (check == 1) {
+                                    Toast.makeText(context, "You should stop the alarm before deleting!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    db.collection("schedules")
+                                            .document(m.getDocument())
+                                            .delete()
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
 
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
 
-                                            }
-                                        });
+                                                }
+                                            });
+                                }
                                 return true;
                         }
                         return false;

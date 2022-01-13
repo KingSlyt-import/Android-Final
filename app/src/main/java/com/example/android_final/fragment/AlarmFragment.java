@@ -39,6 +39,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.w3c.dom.Text;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -106,6 +108,7 @@ public class AlarmFragment extends Fragment {
         //create alarm
         db = FirebaseFirestore.getInstance();
         Button setalarm = view.findViewById(R.id.setalarm);
+        TextView no_alarm = view.findViewById(R.id.no_alarm);
 //        Button stopalarm = view.findViewById(R.id.stopalarm);
         TimePicker AlarmTimePicker = view.findViewById(R.id.AlarmTimePicker);
         AlarmTimePicker.setIs24HourView(true);
@@ -127,6 +130,11 @@ public class AlarmFragment extends Fragment {
                         messagesList.clear();
                         bubbleAdapter.notifyDataSetChanged();
                         if (messagesList.size()!=0) {
+                            no_alarm.setText("");
+                        } else {
+                            no_alarm.setText("You don't have any alarm!");
+                        }
+                        if (messagesList.size()!=0) {
                             youralarm.setText("Your alarm:");
                         } else {
                             youralarm.setText("");
@@ -143,6 +151,11 @@ public class AlarmFragment extends Fragment {
                                         return task.getTime().compareTo(t1.getTime());
                                     }
                                 });
+                                if (messagesList.size()!=0) {
+                                    no_alarm.setText("");
+                                } else {
+                                    no_alarm.setText("You don't have any alarm!");
+                                }
                                 bubbleAdapter.notifyDataSetChanged();
                                 if (messagesList.size()!=0) {
                                     youralarm.setText("Your alarm:");
