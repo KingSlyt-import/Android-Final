@@ -23,6 +23,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -98,6 +100,13 @@ public class TasksFragment extends Fragment {
                         for (QueryDocumentSnapshot doc : value) {
                             if (doc.get("Name")!=null) {
                                 taskList.add(new Task(doc.getString("Name"), doc.getString("Importance"), doc.getString("Day"), doc.getString("Note"), doc.getId(), false));
+                                Collections.sort(taskList, new Comparator<Task>() {
+                                    @Override
+                                    public int compare(Task task, Task t1) {
+                                        return task.getImportance().compareTo(t1.getImportance());
+                                    }
+                                });
+                                Collections.reverse(taskList);
                                 taskAdapter.notifyDataSetChanged();
                             }
                         }

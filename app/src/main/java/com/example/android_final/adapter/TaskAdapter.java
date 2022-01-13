@@ -2,6 +2,7 @@ package com.example.android_final.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -63,8 +65,22 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             return;
         holder.task_item_name.setText(m.getName());
         holder.task_item_body.setText(m.getBody());
-        //holder.task_item_completion.setChecked(false);
         holder.task_item_radiogroup.clearCheck();
+        if (m.getImportance().equals("!")) {
+            holder.task_importance.setText("Level: !");
+            holder.task_importance.setTextColor(Color.parseColor("#55de1b"));
+        } else if (m.getImportance().equals("!!")) {
+            holder.task_importance.setText("Level: !!");
+            holder.task_importance.setTextColor(Color.parseColor("#deb41b"));
+        } else if (m.getImportance().equals("!!!")) {
+            holder.task_importance.setText("Level: !!!");
+            holder.task_importance.setTextColor(Color.parseColor("#de351b"));
+        }
+        if (position%2==1) {
+            holder.task_item.setBackgroundColor(Color.parseColor("#d2f7dc"));
+        } else {
+            holder.task_item.setBackgroundColor(Color.parseColor("#ffffff"));
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,6 +197,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         TextView task_item_body;
         CustomRadioButton task_item_completion;
         RadioGroup task_item_radiogroup;
+        LinearLayout task_item;
+        TextView task_importance;
 //        CheckBox task_item_completion;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -188,6 +206,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             task_item_body = itemView.findViewById(R.id.task_item_body);
             task_item_completion = itemView.findViewById(R.id.task_item_completion);
             task_item_radiogroup = itemView.findViewById(R.id.task_item_radiogroup);
+            task_item = itemView.findViewById(R.id.task_item);
+            task_importance = itemView.findViewById(R.id.task_importance);
         }
     }
 }

@@ -62,6 +62,7 @@ public class CreateNote extends AppCompatActivity {
 
         //category select
         ArrayList<String> categories = new ArrayList<>();
+        categories.add("Root");
         db.collection("categories")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -102,7 +103,7 @@ public class CreateNote extends AppCompatActivity {
 
                 if (title.isEmpty() || body.isEmpty()) {
                     progressBar.setVisibility(View.INVISIBLE);
-                    Toast.makeText(CreateNote.this, "Cannot save category with empty name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateNote.this, "Cannot create note with empty name or body", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

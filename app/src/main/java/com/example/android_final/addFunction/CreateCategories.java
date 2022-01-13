@@ -1,6 +1,7 @@
 package com.example.android_final.addFunction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -94,7 +95,8 @@ public class CreateCategories extends AppCompatActivity {
             Map<String, Object> category = new HashMap<>();
             category.put("name", name);
             category.put("description", description);
-
+            category.put("icon", icon_spinner.getSelectedItem()+"");
+            category.put("color", cate_cate_spinner.getSelectedItem().toString()+"");
             db.collection("categories").document()
                     .set(category)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {

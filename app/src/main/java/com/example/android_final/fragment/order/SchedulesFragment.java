@@ -2,10 +2,12 @@ package com.example.android_final.fragment.order;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,9 @@ import android.view.ViewGroup;
 import com.example.android_final.R;
 import com.example.android_final.adapter.BubbleAdapter;
 import com.example.android_final.data.Bubble;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.annotations.Nullable;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,6 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,10 +104,10 @@ public class SchedulesFragment extends Fragment {
                         }
                         for (QueryDocumentSnapshot doc : value) {
                             if (doc.get("Name")!=null && doc.get("Remain")!=null) {
-                                messagesList.add(new Bubble(R.drawable.icon1, doc.getString("Name"), doc.getString("Remain"), doc.getId()));
+                                //Integer.parseInt(doc.getString("Icon"))
+                                messagesList.add(new Bubble(0, doc.getString("Name"), doc.getString("Remain"), doc.getId()));
                                 bubbleAdapter.notifyDataSetChanged();
                             }
-
                         }
                     }
 

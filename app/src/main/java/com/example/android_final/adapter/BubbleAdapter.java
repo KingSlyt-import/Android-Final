@@ -79,6 +79,7 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()){
                             case R.id.deleteitemonly:
+                                check = 0;
                                 db.collection("schedules")
                                         .document(m.getDocument())
                                         .delete()
@@ -115,22 +116,23 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
 //                        countDownTimer.cancel();
 //                    }
                     if (holder.bubble_magic.getText().equals("a") && check == 1) {
-                        new AlertDialog.Builder(context)
-                                .setTitle("Alert")
-                                .setMessage("You need to stop the timer before starting a new one!")
-
-                                // Specifying a listener allows you to take an action before dismissing the dialog.
-                                // The dialog is automatically dismissed when a dialog button is clicked.
-                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        // Continue with delete operation
-                                    }
-                                })
-
-                                // A null listener allows the button to dismiss the dialog and take no further action.
-
-                                .setIcon(android.R.drawable.ic_dialog_alert)
-                                .show();
+                        Toast.makeText(context, "You need to stop the timer before starting a new one!", Toast.LENGTH_SHORT).show();
+//                        new AlertDialog.Builder(context)
+//                                .setTitle("Alert")
+//                                .setMessage("You need to stop the timer before starting a new one!")
+//
+//                                // Specifying a listener allows you to take an action before dismissing the dialog.
+//                                // The dialog is automatically dismissed when a dialog button is clicked.
+//                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        // Continue with delete operation
+//                                    }
+//                                })
+//
+//                                // A null listener allows the button to dismiss the dialog and take no further action.
+//
+//                                .setIcon(android.R.drawable.ic_dialog_alert)
+//                                .show();
                     }
                     if (holder.bubble_magic.getText().equals("a") && check == 0) {
                         check = 1;

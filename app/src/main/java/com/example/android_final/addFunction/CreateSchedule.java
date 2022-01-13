@@ -32,8 +32,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.android_final.Notify.NotificationReceiver;
 import com.example.android_final.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -77,7 +81,7 @@ public class CreateSchedule extends AppCompatActivity {
         datePicker = findViewById(R.id.datePicker);
         sch_repeat_radio = findViewById(R.id.sch_repeat_radio);
 
-        //category select, still need to wait to show all cate
+        //category select
         ArrayList<String> cate_array  = new ArrayList<>();
         cate_array.add("Root");
         db.collection("categories")
@@ -136,12 +140,41 @@ public class CreateSchedule extends AppCompatActivity {
                 }
             }
 
+            //icon but doest work
+//            ArrayList<String> icon  = new ArrayList<>();
+//            if (schedule_cate_spinner.getSelectedItem().toString().equals("Root")) {
+//                icon.add("0");
+//            } else {
+//                db.collection("categories")
+//                        .whereEqualTo("name", schedule_cate_spinner.getSelectedItem().toString())
+//                        .get()
+//                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                if (task.isSuccessful()) {
+//                                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+//                                        icon.add(document.getString("icon"));
+//                                    }
+//                                } else {
+//                                }
+//                            }
+//                        })
+//                        .addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//
+//                            }
+//                        });
+//            }
+
             Map<String, Object> schedule = new HashMap<>();
             schedule.put("Name", sch_name.getText().toString());
             schedule.put("Category", schedule_cate_spinner.getSelectedItem().toString());
             schedule.put("TimeStart", timePicker.getHour()+":"+timePicker.getMinute());
             schedule.put("TimeEnd", timePicker2.getHour()+":"+timePicker2.getMinute());
             schedule.put("Day", dayPicked+"/"+pickmonth2+"/"+pickyear);
+//            schedule.put("Icon", icon.get(0)+"");
+//            icon.clear();
             if (sch_repeat_radio.isChecked()) {
                 schedule.put("Repeat", "Yes");
             } else {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Task implements Serializable {
     private String name;
-    private String importance;
+    String importance;
     private String day;
     private String body;
     private String document;
