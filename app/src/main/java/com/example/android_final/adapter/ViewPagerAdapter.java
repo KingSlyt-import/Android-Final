@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.android_final.fragment.AddFragment;
+import com.example.android_final.fragment.AlarmFragment;
 import com.example.android_final.fragment.HomeFragment;
 import com.example.android_final.fragment.ListFragment;
 import com.example.android_final.fragment.OptionFragment;
@@ -27,8 +28,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return new AddFragment();
             case 2:
-                return new ListFragment();
+                return new AlarmFragment();
             case 3:
+                return new ListFragment();
+            case 4:
                 return new OptionFragment();
         }
         return null;
@@ -36,7 +39,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
     @Nullable
@@ -49,8 +52,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 title = "Add";
             case 2:
-                title = "List";
+                title = "Alarm";
             case 3:
+                title = "List";
+            case 4:
                 title = "Option";
         }
         return title;

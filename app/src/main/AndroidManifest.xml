@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:allowBackup="true"
@@ -55,6 +57,10 @@
         <receiver
             android:name=".Notify.NotificationReceiver"
             android:exported="true" />
+        <receiver android:name=".Notify.AlarmReceiver"
+            android:exported="true"/>
+        <service android:name=".Notify.Audio"
+            android:enabled="true"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

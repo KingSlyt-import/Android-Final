@@ -8,56 +8,88 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="59dp">
 
-    <TextView
-        android:id="@+id/sch_time"
-        android:layout_width="249dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:gravity="center_vertical"
-        android:hint="Time Range"
-        app:layout_constraintStart_toStartOf="@+id/sch_cate"
-        app:layout_constraintTop_toBottomOf="@+id/sch_cate" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/create_schedule_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/main_theme">
+
+            <TextView
+                android:id="@+id/create_category_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Timer"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/sch_day"
-        android:layout_width="249dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
         android:gravity="center_vertical"
-        android:hint="Day"
-        app:layout_constraintStart_toStartOf="@+id/sch_time"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        android:text="Date"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/sch_repeat"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:text="Repeat or not"
-        app:layout_constraintStart_toStartOf="@+id/sch_day"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePicker"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/sch_name"
-        android:layout_width="249dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:hint="Name"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.656"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar_layout"
+        tools:ignore="Autofill,HardcodedText" />
 
     <TextView
         android:id="@+id/sch_cate"
         android:layout_width="99dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:text="Category"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/sch_name"
-        app:layout_constraintTop_toBottomOf="@+id/sch_name" />
+        app:layout_constraintTop_toBottomOf="@+id/sch_name"
+        tools:ignore="HardcodedText" />
 
     <Spinner
         android:id="@+id/schedule_cate_spinner"
@@ -70,29 +102,34 @@
     <RadioButton
         android:id="@+id/sch_repeat_radio"
         android:layout_width="34dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         app:layout_constraintStart_toEndOf="@+id/sch_repeat"
         app:layout_constraintTop_toTopOf="@+id/sch_repeat" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/border"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sch_time">
+        app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <TimePicker
             android:id="@+id/timePicker"
-            android:layout_width="157dp"
+            android:background="@drawable/border"
+            android:layout_width="0dp"
             android:layout_height="143dp"
+            android:layout_weight="1"
             android:timePickerMode="spinner" />
 
         <TimePicker
             android:id="@+id/timePicker2"
-            android:layout_width="168dp"
+            android:layout_width="0dp"
             android:layout_height="143dp"
+            android:layout_weight="1"
             android:timePickerMode="spinner" />
 
 
@@ -100,19 +137,78 @@
 
     <DatePicker
         android:id="@+id/datePicker"
-        android:layout_width="251dp"
-        android:layout_height="133dp"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/border"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sch_day" />
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/sch_cate"
+        app:layout_constraintTop_toBottomOf="@+id/sch_cate">
+
+        <TextView
+            android:id="@+id/sch_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="From"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="209dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="To"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="209dp"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
     <Button
-        android:id="@+id/done"
+        android:id="@+id/schedule_done"
         android:layout_width="67dp"
-        android:layout_height="35dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="35dp"
+        android:backgroundTint="@color/gadget_color"
         android:text="✔"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sch_repeat"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/schedule_cancel"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="#ff726f"
+        android:text="✘"
+        app:layout_constraintEnd_toStartOf="@+id/schedule_done"
+        app:layout_constraintTop_toTopOf="@+id/schedule_done"
+        tools:ignore="HardcodedText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

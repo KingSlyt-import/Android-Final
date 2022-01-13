@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.android_final.adapter.ViewPagerAdapter;
@@ -25,17 +26,34 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     FirebaseUser firebaseUser;
     DatabaseReference reference;
+    String destination;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
+        Bundle extras = getIntent().getExtras();
+
         bottomNavigationView = findViewById(R.id.bottom_bar);
         view_pager = findViewById(R.id.view_pager);
 
         ViewPagerAdapter vpa = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         view_pager.setAdapter(vpa);
+
+        //change to destination when click notification
+
+        if (extras!=null) {
+            destination = extras.getString("des");
+            if (destination.equals("schedule")) {
+                bottomNavigationView.getMenu().findItem(R.id.menu_add).setChecked(true);
+                view_pager.setCurrentItem(1);
+            }
+            if (destination.equals("alarm")) {
+                bottomNavigationView.getMenu().findItem(R.id.menu_alarm).setChecked(true);
+                view_pager.setCurrentItem(2);
+            }
+        }
 
         //user session
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -70,9 +88,12 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationView.getMenu().findItem(R.id.menu_add).setChecked(true);
                         break;
                     case 2:
-                        bottomNavigationView.getMenu().findItem(R.id.menu_list).setChecked(true);
+                        bottomNavigationView.getMenu().findItem(R.id.menu_alarm).setChecked(true);
                         break;
                     case 3:
+                        bottomNavigationView.getMenu().findItem(R.id.menu_list).setChecked(true);
+                        break;
+                    case 4:
                         bottomNavigationView.getMenu().findItem(R.id.menu_option).setChecked(true);
                         break;
                 }
@@ -94,11 +115,14 @@ public class MainActivity extends AppCompatActivity {
                 if (item.getTitle().equals("Add")) {
                     view_pager.setCurrentItem(1);
                 }
-                if (item.getTitle().equals("List")) {
+                if (item.getTitle().equals("Alarm")) {
                     view_pager.setCurrentItem(2);
                 }
-                if (item.getTitle().equals("Option")) {
+                if (item.getTitle().equals("List")) {
                     view_pager.setCurrentItem(3);
+                }
+                if (item.getTitle().equals("Option")) {
+                    view_pager.setCurrentItem(4);
                 }
                 return false;
             }
