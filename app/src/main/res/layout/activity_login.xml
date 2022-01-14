@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/main_theme"
     tools:context=".auth.LoginActivity">
 
     <TextView
@@ -78,34 +78,28 @@
         app:layout_constraintTop_toBottomOf="@+id/password"
         tools:ignore="HardcodedText" />
 
-    <Button
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_gg_login"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/round_style"
-        android:text="Login with Google"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#B22222"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        tools:ignore="HardcodedText"/>
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="15dp"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="HardcodedText" />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/btn_fb_login"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="1.5dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="25dp"
+        android:backgroundTint="#4267B2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_gg_login"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_gg_login"/>
+        app:layout_constraintTop_toTopOf="@+id/btn_gg_login" />
 
 <!--        <Button-->
 <!--        android:id="@+id/btn_fb_login"-->
@@ -127,11 +121,11 @@
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="Forgot Password ?"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_fb_login"
@@ -160,5 +154,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createAccount" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:text="Or"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
