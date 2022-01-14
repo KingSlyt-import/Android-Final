@@ -13,6 +13,8 @@
         android:id="@+id/navigationView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/white"
+        android:background="?attr/background_color"
+        app:itemTextColor="?attr/text_color"
         app:menu="@menu/nav_menu" />
+
 </androidx.drawerlayout.widget.DrawerLayout>

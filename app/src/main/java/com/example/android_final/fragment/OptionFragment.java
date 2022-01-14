@@ -1,15 +1,20 @@
 package com.example.android_final.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.android_final.R;
@@ -19,6 +24,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class OptionFragment extends Fragment {
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
+    private SwitchCompat aswitch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,7 @@ public class OptionFragment extends Fragment {
         NavigationView navigationView = view.findViewById(R.id.navigationView);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
@@ -48,6 +56,19 @@ public class OptionFragment extends Fragment {
                 return false;
             }
         });
+
+        aswitch = (SwitchCompat) navigationView.getMenu().findItem(R.id.theme).getActionView();
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            aswitch.setChecked(true);
+        }
+        aswitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+        });
+
         return view;
     }
 }

@@ -28,4 +28,6 @@
     </string-array>
     <string name="facebook_app_id">5154128464621770</string>
     <string name="fb_login_protocol_scheme">fb5154128464621770</string>
+    <string name="switch_theme">Switch Theme</string>
+    <string name="theme">Theme</string>
 </resources>

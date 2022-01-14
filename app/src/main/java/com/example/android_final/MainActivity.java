@@ -1,17 +1,15 @@
 package com.example.android_final;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-
 import com.example.android_final.adapter.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // check theme
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.Theme_Dark);
+        } else {
+            setTheme(R.style.Theme_Light);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
@@ -106,26 +111,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //change tab when select menu items
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getTitle().equals("Home")) {
-                    view_pager.setCurrentItem(0);
-                }
-                if (item.getTitle().equals("Add")) {
-                    view_pager.setCurrentItem(1);
-                }
-                if (item.getTitle().equals("Alarm")) {
-                    view_pager.setCurrentItem(2);
-                }
-                if (item.getTitle().equals("List")) {
-                    view_pager.setCurrentItem(3);
-                }
-                if (item.getTitle().equals("Option")) {
-                    view_pager.setCurrentItem(4);
-                }
-                return false;
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            if (item.getTitle().equals("Home")) {
+                view_pager.setCurrentItem(0);
             }
+            if (item.getTitle().equals("Add")) {
+                view_pager.setCurrentItem(1);
+            }
+            if (item.getTitle().equals("Alarm")) {
+                view_pager.setCurrentItem(2);
+            }
+            if (item.getTitle().equals("List")) {
+                view_pager.setCurrentItem(3);
+            }
+            if (item.getTitle().equals("Option")) {
+                view_pager.setCurrentItem(4);
+            }
+            return false;
         });
 
         // Check default app theme
