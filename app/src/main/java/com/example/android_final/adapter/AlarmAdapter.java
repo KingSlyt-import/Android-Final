@@ -11,6 +11,7 @@ import android.media.AudioAttributes;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,6 +28,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_final.Notify.AlarmReceiver;
+import com.example.android_final.Notify.Audio;
 import com.example.android_final.R;
 import com.example.android_final.custom.CustomRadioButton2;
 import com.example.android_final.data.Alarm;
@@ -153,10 +155,8 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
                             });
                     PendingIntent.getBroadcast(context, Integer.parseInt(m.getRandomID()), intent,
                             PendingIntent.FLAG_UPDATE_CURRENT).cancel();
-                    if (manager != null && pending != null && intent != null) {
-                        intent.putExtra("signal", "off");
-                        context.sendBroadcast(intent);
-                    }
+                    intent.putExtra("signal", "off");
+                    context.sendBroadcast(intent);
                     ////// captcha ok //////
 
                 } else {

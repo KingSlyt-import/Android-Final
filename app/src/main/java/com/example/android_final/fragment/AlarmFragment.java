@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -119,6 +120,10 @@ public class AlarmFragment extends Fragment {
         AlarmAdapter bubbleAdapter = new AlarmAdapter(getActivity(), messagesList);
         bubble_schedule.setAdapter(bubbleAdapter);
         bubble_schedule.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //create line to seperate each item
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        bubble_schedule.addItemDecoration(dividerItemDecoration);
 
         db = FirebaseFirestore.getInstance();
         TextView youralarm = view.findViewById(R.id.youralarm);

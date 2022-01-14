@@ -45,7 +45,7 @@ public class Audio extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d("ecec", "autdio: "+startId);
+
         String temp = intent.getStringExtra("signal");
 
         if (temp.equals("on")) {
@@ -53,9 +53,6 @@ public class Audio extends Service {
         } else {
             onoroff = false;
         }
-
-        Log.d("ecec", "audio: "+onoroff);
-
 
         if (onoroff == true) {
             Log.d("ecec", "audio: da vao true");
