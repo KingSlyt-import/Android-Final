@@ -4,17 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.android_final.R;
@@ -25,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class OptionFragment extends Fragment {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private SwitchCompat aswitch;
+    private SwitchCompat aSwitch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +29,7 @@ public class OptionFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,27 +38,22 @@ public class OptionFragment extends Fragment {
 
         NavigationView navigationView = view.findViewById(R.id.navigationView);
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.logout:
-                        Toast.makeText(OptionFragment.this.getActivity(), "Logout", Toast.LENGTH_SHORT).show();
-                        FirebaseAuth.getInstance().signOut();
-                        LoginManager.getInstance().logOut();
-                        startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                        return true;
-                }
-                return false;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.logout) {
+                Toast.makeText(OptionFragment.this.getActivity(), "Logout", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                LoginManager.getInstance().logOut();
+                startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                return true;
             }
+            return false;
         });
 
-        aswitch = (SwitchCompat) navigationView.getMenu().findItem(R.id.theme).getActionView();
+        aSwitch = (SwitchCompat) navigationView.getMenu().findItem(R.id.theme).getActionView();
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-            aswitch.setChecked(true);
+            aSwitch.setChecked(true);
         }
-        aswitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        aSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             } else {
