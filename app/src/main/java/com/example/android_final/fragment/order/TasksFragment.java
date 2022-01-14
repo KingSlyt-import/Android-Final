@@ -82,8 +82,6 @@ public class TasksFragment extends Fragment {
                                 });
                                 Collections.reverse(taskList);
                                 taskAdapter.notifyDataSetChanged();
-                            } else {
-
                             }
                         }
                     }
