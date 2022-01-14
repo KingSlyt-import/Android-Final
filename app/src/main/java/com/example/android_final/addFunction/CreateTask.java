@@ -23,6 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.android_final.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -42,6 +44,7 @@ public class CreateTask extends AppCompatActivity {
     private RadioButton importance;
     private ProgressBar progressBar;
     FirebaseFirestore db;
+    FirebaseUser firebaseUser;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -60,6 +63,9 @@ public class CreateTask extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.create_task_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        //get current user
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         //category select, still need to wait to show all cate
         ArrayList<String> cate_array = new ArrayList<>();
@@ -151,6 +157,7 @@ public class CreateTask extends AppCompatActivity {
             importance = findViewById(selectedId);
 
             Map<String, Object> task = new HashMap<>();
+            task.put("userId", firebaseUser.getUid());
             task.put("Name", tsk_name.getText().toString());
             task.put("Category", task_cate_spinner.getSelectedItem().toString());
             task.put("Day", dayPicked+"/"+month+"/"+yearPicked);

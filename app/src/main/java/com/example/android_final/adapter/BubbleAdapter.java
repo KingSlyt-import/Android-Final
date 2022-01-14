@@ -25,6 +25,8 @@ import com.example.android_final.R;
 import com.example.android_final.data.Bubble;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -230,14 +232,20 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
         ImageView bubble_icon;
         TextView bubble_documentname;
         LinearLayout bubble;
+        FirebaseUser firebaseUser;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             bubble_magic = itemView.findViewById(R.id.bubble_magic);
             bubble_name = itemView.findViewById(R.id.bubble_name);
             bubble_time = itemView.findViewById(R.id.bubble_time);
             bubble_icon = itemView.findViewById(R.id.bubble_icon);
             bubble_documentname = itemView.findViewById(R.id.bubble_documentname);
             bubble = itemView.findViewById(R.id.bubble);
+
+            //get current user
+            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         }
     }
 }

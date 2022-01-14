@@ -24,6 +24,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -44,6 +46,7 @@ public class CreateNote extends AppCompatActivity {
     ProgressBar progressBar;
 
     FirebaseFirestore db;
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,9 @@ public class CreateNote extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         note_title = findViewById(R.id.note_title);
         note_body = findViewById(R.id.note_body);
+
+        //get current user
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         //category select
         ArrayList<String> categories = new ArrayList<>();
@@ -108,6 +114,7 @@ public class CreateNote extends AppCompatActivity {
                 }
 
                 Map<String, Object> note = new HashMap<>();
+                note.put("userId", firebaseUser.getUid());
                 note.put("title", title);
                 note.put("body", body);
 

@@ -35,6 +35,8 @@ import com.example.android_final.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -57,6 +59,7 @@ public class CreateSchedule extends AppCompatActivity {
     private DatePicker datePicker;
     private RadioButton sch_repeat_radio;
     FirebaseFirestore db;
+    FirebaseUser firebaseUser;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -80,6 +83,9 @@ public class CreateSchedule extends AppCompatActivity {
         sch_name = findViewById(R.id.sch_name);
         datePicker = findViewById(R.id.datePicker);
         sch_repeat_radio = findViewById(R.id.sch_repeat_radio);
+
+        //get current user
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         //category select
         ArrayList<String> cate_array  = new ArrayList<>();
@@ -168,6 +174,7 @@ public class CreateSchedule extends AppCompatActivity {
 //            }
 
             Map<String, Object> schedule = new HashMap<>();
+            schedule.put("userId", firebaseUser.getUid());
             schedule.put("Name", sch_name.getText().toString());
             schedule.put("Category", schedule_cate_spinner.getSelectedItem().toString());
             schedule.put("TimeStart", timePicker.getHour()+":"+timePicker.getMinute());

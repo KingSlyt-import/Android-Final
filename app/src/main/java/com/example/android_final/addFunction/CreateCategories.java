@@ -20,6 +20,8 @@ import com.example.android_final.adapter.ImageSpinnerAdapter;
 import com.example.android_final.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -30,6 +32,7 @@ import java.util.Objects;
 
 public class CreateCategories extends AppCompatActivity {
 
+    FirebaseUser firebaseUser;
     FirebaseFirestore db;
     Toolbar toolbar;
     TextView cate_name;
@@ -68,6 +71,9 @@ public class CreateCategories extends AppCompatActivity {
         ImageSpinnerAdapter icon_adapter = new ImageSpinnerAdapter(this, new Integer[]{R.drawable.icon1, R.drawable.icon2, R.drawable.icon3});
         icon_spinner.setAdapter(icon_adapter);
 
+        //get current user
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         //firestore config
         db = FirebaseFirestore.getInstance();
         cate_name = findViewById(R.id.cate_name);
@@ -93,6 +99,7 @@ public class CreateCategories extends AppCompatActivity {
             }
 
             Map<String, Object> category = new HashMap<>();
+            category.put("userId", firebaseUser.getUid());
             category.put("name", name);
             category.put("description", description);
             category.put("icon", icon_spinner.getSelectedItem()+"");
