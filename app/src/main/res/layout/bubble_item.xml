@@ -36,10 +36,17 @@
 
         <ImageView
             android:id="@+id/bubble_icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/icon1" />
+
+        <TextView
+            android:id="@+id/bubble_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/icon1" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/bubble_name"
@@ -55,7 +62,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="asda"
             android:textAlignment="center" />
     </LinearLayout>
 

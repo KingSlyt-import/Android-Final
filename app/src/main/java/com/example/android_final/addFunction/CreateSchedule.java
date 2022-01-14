@@ -57,7 +57,7 @@ public class CreateSchedule extends AppCompatActivity {
     private TimePicker timePicker;
     private TimePicker timePicker2;
     private DatePicker datePicker;
-    private RadioButton sch_repeat_radio;
+//    private RadioButton sch_repeat_radio;
     FirebaseFirestore db;
     FirebaseUser firebaseUser;
 
@@ -82,7 +82,7 @@ public class CreateSchedule extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         sch_name = findViewById(R.id.sch_name);
         datePicker = findViewById(R.id.datePicker);
-        sch_repeat_radio = findViewById(R.id.sch_repeat_radio);
+//        sch_repeat_radio = findViewById(R.id.sch_repeat_radio);
 
         //get current user
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -182,11 +182,12 @@ public class CreateSchedule extends AppCompatActivity {
             schedule.put("Day", dayPicked+"/"+pickmonth2+"/"+pickyear);
 //            schedule.put("Icon", icon.get(0)+"");
 //            icon.clear();
-            if (sch_repeat_radio.isChecked()) {
-                schedule.put("Repeat", "Yes");
-            } else {
-                schedule.put("Repeat", "No");
-            }
+
+//            if (sch_repeat_radio.isChecked()) {
+//                schedule.put("Repeat", "Yes");
+//            } else {
+//                schedule.put("Repeat", "No");
+//            }
             int minute;
             int hour;
 

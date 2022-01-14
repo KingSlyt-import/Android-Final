@@ -3,8 +3,10 @@ package com.example.android_final.adapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.CountDownTimer;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,6 +38,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,13 +62,27 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         return holder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
         final Task m = tasks.get(position);
         if(m==null)
             return;
         holder.task_item_name.setText(m.getName());
-        holder.task_item_body.setText(m.getBody());
+//        if (m.getBody() == null) {
+//            holder.task_item_body.setText("dasdasd");
+//        } else {
+//            holder.task_item_body.setText(m.getDay()+" | "+m.getBody());
+//        }
+        int day = LocalDateTime.now().getDayOfMonth();
+        int month = LocalDateTime.now().getMonthValue();
+        int year = LocalDateTime.now().getYear();
+        String temp_time[] = m.getDay().split("/");
+        if (day == Integer.parseInt(temp_time[0]) && month == Integer.parseInt(temp_time[1]) && year == Integer.parseInt(temp_time[2])) {
+            holder.task_item_body.setText("Today");
+        } else {
+            holder.task_item_body.setText(m.getDay());
+        }
         holder.task_item_radiogroup.clearCheck();
         if (m.getImportance().equals("!")) {
             holder.task_importance.setText("Level: !");

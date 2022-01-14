@@ -66,7 +66,7 @@ public class AddFragment extends Fragment {
                             startActivity(i);
                         }
 
-                        if (item.getTitle().equals("Schedules")) {
+                        if (item.getTitle().equals("Timers")) {
                             Intent i = new Intent(getActivity(), CreateSchedule.class);
                             startActivity(i);
                         }
