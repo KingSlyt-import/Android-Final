@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.os.Build;
@@ -48,6 +49,8 @@ public class Audio extends Service {
 
         String temp = intent.getStringExtra("signal");
 
+//        AudioManager audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+
         if (temp.equals("on")) {
             onoroff = true;
         } else {
@@ -55,8 +58,9 @@ public class Audio extends Service {
         }
 
         if (onoroff == true) {
-            Log.d("ecec", "audio: da vao true");
-            mediaPlayer = MediaPlayer.create(this, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
+//            audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
+            mediaPlayer = MediaPlayer.create(this, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
+            mediaPlayer.setVolume(100,100);
             mediaPlayer.start();
         } else {
             if (mediaPlayer!=null) {

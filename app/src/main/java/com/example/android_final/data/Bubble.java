@@ -7,12 +7,22 @@ public class Bubble implements Serializable {
     private String name;
     private String time;
     private String document;
+    private String day;
 
-    public Bubble(int icon, String name, String time, String document) {
+    public Bubble(int icon, String name, String time, String document, String day) {
         this.icon = icon;
         this.name = name;
         this.time = time;
         this.document = document;
+        this.day = day;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public int getIcon() {

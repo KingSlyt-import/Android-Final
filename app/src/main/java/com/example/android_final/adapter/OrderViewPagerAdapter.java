@@ -26,9 +26,9 @@ public class OrderViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new NotesFragment();
-            case 1:
                 return new SchedulesFragment();
+            case 1:
+                return new NotesFragment();
             case 2:
                 return new TasksFragment();
         }
@@ -45,9 +45,9 @@ public class OrderViewPagerAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return  "Notes";
+                return  "Timers";
             case 1:
-                return "Schedules";
+                return "Notes";
             case 2:
                 return "Tasks";
         }

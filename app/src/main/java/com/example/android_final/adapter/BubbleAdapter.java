@@ -68,6 +68,7 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
         holder.bubble_name.setText(m.getName());
         holder.bubble_time.setText(m.getTime());
         holder.bubble_documentname.setText(m.getDocument());
+        holder.bubble_day.setText(m.getDay());
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -226,13 +227,11 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView bubble_magic;
-        TextView bubble_name;
-        TextView bubble_time;
+        TextView bubble_magic, bubble_name, bubble_time, bubble_documentname, bubble_day;
         ImageView bubble_icon;
-        TextView bubble_documentname;
         LinearLayout bubble;
         FirebaseUser firebaseUser;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -241,6 +240,7 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
             bubble_name = itemView.findViewById(R.id.bubble_name);
             bubble_time = itemView.findViewById(R.id.bubble_time);
             bubble_icon = itemView.findViewById(R.id.bubble_icon);
+            bubble_day = itemView.findViewById(R.id.bubble_day);
             bubble_documentname = itemView.findViewById(R.id.bubble_documentname);
             bubble = itemView.findViewById(R.id.bubble);
 

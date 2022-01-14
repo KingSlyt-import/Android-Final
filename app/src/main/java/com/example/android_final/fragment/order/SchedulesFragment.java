@@ -71,7 +71,7 @@ public class SchedulesFragment extends Fragment {
                         for (QueryDocumentSnapshot doc : value) {
                             if (doc.get("userId").equals(firebaseUser.getUid()) && doc.get("Remain") !=null) {
                                 //Integer.parseInt(doc.getString("Icon"))
-                                messagesList.add(new Bubble(0, doc.getString("Name"), doc.getString("Remain"), doc.getId()));
+                                messagesList.add(new Bubble(0, doc.getString("Name"), doc.getString("Remain"), doc.getId(), doc.getString("Day")));
                                 bubbleAdapter.notifyDataSetChanged();
                                 if (messagesList.size()!=0) {
                                     no_schedule.setText("");

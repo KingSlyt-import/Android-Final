@@ -51,18 +51,18 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/sch_repeat"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical"
-        android:text="Repeat or not"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker"
-        tools:ignore="HardcodedText" />
+<!--    <TextView-->
+<!--        android:id="@+id/sch_repeat"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginStart="40dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:text="Repeat or not"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/datePicker"-->
+<!--        tools:ignore="HardcodedText" />-->
 
     <EditText
         android:id="@+id/sch_name"
@@ -99,12 +99,12 @@
         app:layout_constraintStart_toEndOf="@+id/sch_cate"
         app:layout_constraintTop_toTopOf="@+id/sch_cate" />
 
-    <RadioButton
-        android:id="@+id/sch_repeat_radio"
-        android:layout_width="34dp"
-        android:layout_height="50dp"
-        app:layout_constraintStart_toEndOf="@+id/sch_repeat"
-        app:layout_constraintTop_toTopOf="@+id/sch_repeat" />
+<!--    <RadioButton-->
+<!--        android:id="@+id/sch_repeat_radio"-->
+<!--        android:layout_width="34dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/sch_repeat"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/sch_repeat" />-->
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -193,7 +193,7 @@
         android:layout_width="67dp"
         android:layout_height="50dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="@color/gadget_color"
         android:text="✔"
         app:layout_constraintBottom_toBottomOf="parent"
