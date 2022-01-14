@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class TasksFragment extends Fragment {
 
@@ -72,7 +73,7 @@ public class TasksFragment extends Fragment {
                             return;
                         }
                         for (QueryDocumentSnapshot doc : value) {
-                            if (doc.get("userId").equals(firebaseUser.getUid())) {
+                            if (Objects.equals(doc.get("userId"), firebaseUser.getUid())) {
                                 taskList.add(new Task(doc.getString("Name"), doc.getString("Importance"), doc.getString("Day"), doc.getString("Note"), doc.getId(), false));
                                 Collections.sort(taskList, new Comparator<Task>() {
                                     @Override
