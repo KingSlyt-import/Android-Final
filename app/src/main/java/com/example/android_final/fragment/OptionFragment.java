@@ -63,9 +63,9 @@ public class OptionFragment extends Fragment {
         }
         aswitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         });
 
