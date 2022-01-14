@@ -177,8 +177,6 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
                     intent.putExtra("title", "Your alarm has started!!");
                     intent.putExtra("text", "Click to open alarm tab");
                     intent.putExtra("document", m.getDocument());
-                    long timenow = System.currentTimeMillis();
-                    int random = (int)Math.floor(Math.random()*(100-10+1)+10);
                     pending = PendingIntent.getBroadcast(context, Integer.parseInt(m.getRandomID()), intent, PendingIntent.FLAG_UPDATE_CURRENT);
                     // Schdedule notification
                     manager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
@@ -188,16 +186,24 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
                     int minute = Integer.parseInt(temp[1]);
                     calendar.set(Calendar.HOUR_OF_DAY,hour);
                     calendar.set(Calendar.MINUTE,minute);
-                    long milli = calendar.getTimeInMillis();
-                    LocalDateTime now = LocalDateTime.now();
-                    if (now.getHour()>hour) {
+                    long milli = calendar.getTimeInMillis() - 25000;
+                    long timenow = System.currentTimeMillis();
+                    if (timenow > milli) {
                         milli += 86400000;
-                    } else if (now.getHour()==hour) {
-                        if (now.getMinute()>minute) {
-                            milli += 86400000;
-                        }
                     }
                     manager.set(AlarmManager.RTC_WAKEUP, milli, pending);
+
+//                    LocalDateTime now = LocalDateTime.now();
+//
+//                    Log.d("milli", "milli: "+milli +"\n");
+//                    if (now.getHour()>hour) {
+//                        milli += 86400000;
+//                    } else if (now.getHour()==hour) {
+//                        if (now.getMinute()>minute) {
+//                            milli += 86400000;
+//                        }
+//                    }
+
                 }
             }
         });
