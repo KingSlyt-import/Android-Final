@@ -11,10 +11,6 @@
         android:icon="@drawable/alarm"
         android:title="Alarm"
         tools:ignore="HardcodedText" />
-    <item android:id="@+id/menu_list"
-        android:icon="@drawable/ic_baseline_calendar_month_24"
-        android:title="Calendar"
-        tools:ignore="HardcodedText" />
     <item android:id="@+id/menu_option"
         android:icon="@drawable/option"
         android:title="@string/option"/>

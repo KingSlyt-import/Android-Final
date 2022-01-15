@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment {
                             display_tasks.setText("You have "+taskList.size()+" tasks today!");
                             home_congrat.setText("");
                         } else {
-                            home_congrat.setText("Congratulation! You have no task today!!");
+                            home_congrat.setText("Congratulation! \n You have no task today!!");
                             display_tasks.setText("");
                         }
                     }
