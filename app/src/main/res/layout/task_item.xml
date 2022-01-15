@@ -62,6 +62,7 @@
 
                         <com.example.android_final.custom.CustomRadioButton
                             android:id="@+id/task_item_completion"
+                            android:buttonTint="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </RadioGroup>
