@@ -116,7 +116,6 @@ public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListene
 
     @Override
     public void OnTaskClick(int position) {
-
         Intent intent = new Intent(getActivity().getApplicationContext(), SubTaskActivity.class);
         intent.putExtra("task_title", taskList.get(position).getName());
         startActivity(intent);
