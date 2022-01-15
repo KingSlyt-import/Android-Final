@@ -5,22 +5,17 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.CountDownTimer;
-import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -28,13 +23,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_final.R;
-import com.example.android_final.addFunction.CreateTask;
 import com.example.android_final.custom.CustomRadioButton;
-import com.example.android_final.data.Note;
 import com.example.android_final.data.Task;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -100,10 +92,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             holder.task_item.setBackgroundColor(Color.parseColor("#ffffff"));
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View view) {
-                PopupMenu popup = new PopupMenu(holder.itemView.getContext(), view);
+            public boolean onLongClick(View v) {
+                PopupMenu popup = new PopupMenu(holder.itemView.getContext(), v);
                 MenuInflater inflater = popup.getMenuInflater();
                 inflater.inflate(R.menu.edit_delete_menu, popup.getMenu());
                 popup.show();
@@ -123,22 +115,22 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                                 edit_task_note.setText(holder.task_item_body.getText().toString());
                                 builder
                                         .setPositiveButton("Done", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            Map<String, Object> data = new HashMap<>();
-                                            data.put("Name", edit_task_name.getText().toString());
-                                            data.put("Note", edit_task_note.getText().toString());
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                Map<String, Object> data = new HashMap<>();
+                                                data.put("Name", edit_task_name.getText().toString());
+                                                data.put("Note", edit_task_note.getText().toString());
 
-                                            db.collection("tasks").document(m.getDocument())
-                                                    .set(data, SetOptions.merge());
-                                        }
-                                    })
-                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                                db.collection("tasks").document(m.getDocument())
+                                                        .set(data, SetOptions.merge());
+                                            }
+                                        })
+                                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
 
-                                        }
-                                    });
+                                            }
+                                        });
                                 AlertDialog dialog = builder.create();
                                 dialog.show();
                                 return true;
@@ -164,6 +156,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                     }
                 });
 //                Toast.makeText(context, holder.task_item_name.getText().toString(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
