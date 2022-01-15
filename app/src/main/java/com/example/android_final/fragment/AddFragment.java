@@ -56,22 +56,22 @@ public class AddFragment extends Fragment {
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
 
-                        if (item.getTitle().equals("Categories")) {
+                        if (item.getTitle().equals("Category")) {
                             Intent i = new Intent(getActivity(), CreateCategories.class);
                             startActivity(i);
                         }
 
-                        if (item.getTitle().equals("Notes")) {
+                        if (item.getTitle().equals("Note")) {
                             Intent i = new Intent(getActivity(), CreateNote.class);
                             startActivity(i);
                         }
 
-                        if (item.getTitle().equals("Timers")) {
+                        if (item.getTitle().equals("Timer")) {
                             Intent i = new Intent(getActivity(), CreateSchedule.class);
                             startActivity(i);
                         }
 //
-                        if (item.getTitle().equals("Tasks")) {
+                        if (item.getTitle().equals("Task")) {
                             Intent i = new Intent(getActivity(), CreateTask.class);
                             startActivity(i);
                         }

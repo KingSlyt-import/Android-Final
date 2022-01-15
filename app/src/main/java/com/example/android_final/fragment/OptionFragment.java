@@ -49,10 +49,15 @@ public class OptionFragment extends Fragment {
             return false;
         });
 
+        // Find id of switch component in nav menu
         aSwitch = (SwitchCompat) navigationView.getMenu().findItem(R.id.theme).getActionView();
+
+        // If it already in night mode state checked the switch
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             aSwitch.setChecked(true);
         }
+
+        // Event handler for switching the switch to change theme
         aSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
