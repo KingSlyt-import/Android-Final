@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_final.R;
 import com.example.android_final.custom.CustomRadioButton;
-import com.example.android_final.data.Task;
+import com.example.android_final.data.SubTask;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,59 +33,56 @@ import com.google.firebase.firestore.SetOptions;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.ViewHolder> {
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    List<Task> tasks;
     Context context;
-    List<NoteAdapter.ViewHolder> viewHolderList = new ArrayList<>();
-    OnTaskListener onTaskListener;
-    int i = 0;
-    public TaskAdapter(Context context, List<Task> tasks, OnTaskListener onTaskListener) {
+    ArrayList<SubTask> subTask = new ArrayList<>();
+
+    public SubTaskAdapter (Context context, ArrayList<SubTask> subTask) {
         this.context = context;
-        this.tasks = tasks;
-        this.onTaskListener = onTaskListener;
+        this.subTask = subTask;
     }
+
     @NonNull
     @Override
-    public TaskAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item,parent,false);
-        TaskAdapter.ViewHolder holder = new TaskAdapter.ViewHolder(v, onTaskListener);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item,parent,false);
+        SubTaskAdapter.ViewHolder holder = new SubTaskAdapter.ViewHolder(view);
         return holder;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
-        final Task m = tasks.get(position);
-        if(m==null)
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final SubTask sub_task = subTask.get(position);
+
+        if(sub_task == null)
             return;
-        holder.task_item_name.setText(m.getName());
-//        if (m.getBody() == null) {
-//            holder.task_item_body.setText("dasdasd");
-//        } else {
-//            holder.task_item_body.setText(m.getDay()+" | "+m.getBody());
-//        }
+
+        holder.task_item_name.setText(sub_task.getName());
+
         int day = LocalDateTime.now().getDayOfMonth();
         int month = LocalDateTime.now().getMonthValue();
         int year = LocalDateTime.now().getYear();
-        String temp_time[] = m.getDay().split("/");
+
+        String temp_time[] = sub_task.getDay().split("/");
         if (day == Integer.parseInt(temp_time[0]) && month == Integer.parseInt(temp_time[1]) && year == Integer.parseInt(temp_time[2])) {
             holder.task_item_body.setText("Today");
         } else {
-            holder.task_item_body.setText(m.getDay());
+            holder.task_item_body.setText(sub_task.getDay());
         }
+
         holder.task_item_radiogroup.clearCheck();
-        if (m.getImportance().equals("!")) {
+        if (sub_task.getImportance().equals("!")) {
             holder.task_importance.setText("Level: !");
             holder.task_importance.setTextColor(Color.parseColor("#55de1b"));
-        } else if (m.getImportance().equals("!!")) {
+        } else if (sub_task.getImportance().equals("!!")) {
             holder.task_importance.setText("Level: !!");
             holder.task_importance.setTextColor(Color.parseColor("#deb41b"));
-        } else if (m.getImportance().equals("!!!")) {
+        } else if (sub_task.getImportance().equals("!!!")) {
             holder.task_importance.setText("Level: !!!");
             holder.task_importance.setTextColor(Color.parseColor("#de351b"));
         }
@@ -124,7 +121,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                                                 data.put("Name", edit_task_name.getText().toString());
                                                 data.put("Note", edit_task_note.getText().toString());
 
-                                                db.collection("tasks").document(m.getDocument())
+                                                db.collection("tasks").document(sub_task.getDocument())
                                                         .set(data, SetOptions.merge());
                                             }
                                         })
@@ -139,7 +136,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                                 return true;
                             case R.id.deleteitem:
                                 db.collection("tasks")
-                                        .document(m.getDocument())
+                                        .document(sub_task.getDocument())
                                         .delete()
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
@@ -176,7 +173,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                         }
                         public void onFinish() {
                             db.collection("tasks")
-                                    .document(m.getDocument())
+                                    .document(sub_task.getDocument())
                                     .delete()
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
@@ -201,39 +198,25 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
-        return tasks.size();
+        return subTask.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder{
         TextView task_item_name;
         TextView task_item_body;
         CustomRadioButton task_item_completion;
         RadioGroup task_item_radiogroup;
         LinearLayout task_item;
         TextView task_importance;
-
-        OnTaskListener onTaskListener;
-//        CheckBox task_item_completion;
-        public ViewHolder(@NonNull View itemView, OnTaskListener onTaskListener) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             task_item_name = itemView.findViewById(R.id.task_item_name);
             task_item_body = itemView.findViewById(R.id.task_item_body);
             task_item_completion = itemView.findViewById(R.id.task_item_completion);
             task_item_radiogroup = itemView.findViewById(R.id.task_item_radiogroup);
             task_item = itemView.findViewById(R.id.task_item);
             task_importance = itemView.findViewById(R.id.task_importance);
-            this.onTaskListener = onTaskListener;
-
-            itemView.setOnClickListener(this);
         }
-
-        @Override
-        public void onClick(View v) {
-            onTaskListener.OnTaskClick(getAdapterPosition());
-        }
-    }
-
-    public interface OnTaskListener {
-        void OnTaskClick (int position);
     }
 }

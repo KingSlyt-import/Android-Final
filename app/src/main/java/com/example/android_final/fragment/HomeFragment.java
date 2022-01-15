@@ -34,7 +34,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements TaskAdapter.OnTaskListener{
 
     FirebaseFirestore db;
     FirebaseUser firebaseUser;
@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
         List<Task> taskList = new ArrayList<>();
         RecyclerView task_recyclerview = view.findViewById(R.id.home_task_recyclerview);
         task_recyclerview.setHasFixedSize(true);
-        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), taskList);
+        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), taskList, this::OnTaskClick);
         task_recyclerview.setAdapter(taskAdapter);
         task_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -112,5 +112,10 @@ public class HomeFragment extends Fragment {
                     }
                 });
         return view;
+    }
+
+    @Override
+    public void OnTaskClick(int position) {
+
     }
 }
