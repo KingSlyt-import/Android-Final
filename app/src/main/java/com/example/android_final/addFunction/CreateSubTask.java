@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -42,6 +44,7 @@ public class CreateSubTask extends AppCompatActivity {
     private RadioButton firstRadio;
     private RadioButton importance;
     private ProgressBar progressBar;
+    private Toolbar toolbar;
     FirebaseFirestore db;
     FirebaseUser firebaseUser;
 
@@ -50,6 +53,11 @@ public class CreateSubTask extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
+
+        //set support action bar
+        toolbar = findViewById(R.id.create_task_toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         tsk_name = findViewById(R.id.tsk_name);
         datePicker2 = findViewById(R.id.datePicker2);
@@ -164,5 +172,13 @@ public class CreateSubTask extends AppCompatActivity {
             Toast.makeText(v.getContext(), "Canceled operation", Toast.LENGTH_SHORT).show();
             onBackPressed();
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

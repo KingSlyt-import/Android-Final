@@ -17,13 +17,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/create_category_toolbar"
+            android:id="@+id/create_subtask_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/main_theme">
 
             <TextView
-                android:id="@+id/create_category_title"
+                android:id="@+id/create_subtask_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sub task"

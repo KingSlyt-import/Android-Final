@@ -82,7 +82,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".fragment.SubTaskActivity" />
+        <activity android:name=".fragment.SubTask" />
         <activity android:name=".addFunction.CreateSubTask" />
     </application>
 

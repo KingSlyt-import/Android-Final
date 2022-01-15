@@ -10,16 +10,14 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android_final.R;
 import com.example.android_final.adapter.TaskAdapter;
-import com.example.android_final.data.SubTask;
 import com.example.android_final.data.Task;
-import com.example.android_final.fragment.SubTaskActivity;
+import com.example.android_final.fragment.SubTask;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.annotations.Nullable;
@@ -33,14 +31,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
 public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListener {
 
     FirebaseFirestore db;
     FirebaseUser firebaseUser;
     List<Task> taskList = new ArrayList<>();
-    ArrayList<SubTask> subTasks = new ArrayList<>();
+    ArrayList<com.example.android_final.data.SubTask> subTasks = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -118,7 +115,7 @@ public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListene
 
     @Override
     public void OnTaskClick(int position) {
-        Intent intent = new Intent(getActivity().getApplicationContext(), SubTaskActivity.class);
+        Intent intent = new Intent(getActivity().getApplicationContext(), SubTask.class);
         intent.putExtra("task_title", taskList.get(position).getName());
         startActivity(intent);
     }
