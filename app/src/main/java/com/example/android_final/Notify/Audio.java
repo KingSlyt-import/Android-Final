@@ -13,12 +13,18 @@ import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Audio extends Service {
     boolean onoroff;
     MediaPlayer mediaPlayer;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -49,6 +55,8 @@ public class Audio extends Service {
 
         String temp = intent.getStringExtra("signal");
 
+        Log.d("ringing", "onStartCommand: vao dc audio");
+
 //        AudioManager audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
 
         if (temp.equals("on")) {
@@ -62,10 +70,36 @@ public class Audio extends Service {
             mediaPlayer = MediaPlayer.create(this, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
             mediaPlayer.setVolume(100,100);
             mediaPlayer.start();
+            db.collection("rings").document("rings").update("rings","yes")
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
         } else {
             if (mediaPlayer!=null) {
                 mediaPlayer.pause();
                 mediaPlayer.reset();
+                db.collection("rings").document("rings").update("rings","no")
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
             }
         }
         return START_STICKY;
