@@ -89,9 +89,6 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationView.getMenu().findItem(R.id.menu_alarm).setChecked(true);
                         break;
                     case 3:
-                        bottomNavigationView.getMenu().findItem(R.id.menu_list).setChecked(true);
-                        break;
-                    case 4:
                         bottomNavigationView.getMenu().findItem(R.id.menu_option).setChecked(true);
                         break;
                 }
@@ -113,9 +110,6 @@ public class MainActivity extends AppCompatActivity {
             }
             if (item.getTitle().equals("Alarm")) {
                 view_pager.setCurrentItem(2);
-            }
-            if (item.getTitle().equals("Calendar")) {
-                view_pager.setCurrentItem(3);
             }
             if (item.getTitle().equals("Options")) {
                 view_pager.setCurrentItem(4);
