@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 view_pager.setCurrentItem(2);
             }
             if (item.getTitle().equals("Options")) {
-                view_pager.setCurrentItem(4);
+                view_pager.setCurrentItem(3);
             }
             return false;
         });

@@ -81,7 +81,6 @@ public class SchedulesFragment extends Fragment {
                             }
                         }
                     }
-
                 });
         return view;
     }

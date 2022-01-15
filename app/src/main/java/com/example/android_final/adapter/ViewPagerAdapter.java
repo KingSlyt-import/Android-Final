@@ -30,8 +30,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 2:
                 return new AlarmFragment();
             case 3:
-                return new ListFragment();
-            case 4:
                 return new OptionFragment();
         }
         return null;
@@ -39,7 +37,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 4;
     }
 
     @Nullable
@@ -54,8 +52,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 2:
                 title = "Alarm";
             case 3:
-                title = "List";
-            case 4:
                 title = "Option";
         }
         return title;
