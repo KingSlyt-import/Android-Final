@@ -62,7 +62,7 @@ public class SchedulesFragment extends Fragment {
                         if (messagesList.size()!=0) {
                             no_schedule.setText("");
                         } else {
-                            no_schedule.setText("You don't have any alarm!");
+                            no_schedule.setText("You don't have any timer!");
                         }
                         if (e != null) {
 
@@ -76,7 +76,7 @@ public class SchedulesFragment extends Fragment {
                                 if (messagesList.size()!=0) {
                                     no_schedule.setText("");
                                 } else {
-                                    no_schedule.setText("You don't have any alarm!");
+                                    no_schedule.setText("You don't have any timer!");
                                 }
                             }
                         }
