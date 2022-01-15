@@ -114,10 +114,10 @@ public class MainActivity extends AppCompatActivity {
             if (item.getTitle().equals("Alarm")) {
                 view_pager.setCurrentItem(2);
             }
-            if (item.getTitle().equals("List")) {
+            if (item.getTitle().equals("Calendar")) {
                 view_pager.setCurrentItem(3);
             }
-            if (item.getTitle().equals("Option")) {
+            if (item.getTitle().equals("Options")) {
                 view_pager.setCurrentItem(4);
             }
             return false;
