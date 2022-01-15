@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -20,9 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.android_final.R;
 import com.example.android_final.adapter.AlarmAdapter;
 import com.example.android_final.data.Alarm;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -138,7 +135,6 @@ public class AlarmFragment extends Fragment {
                         }
                     }, 12, 0, false
             );
-            timePickerDialog.updateTime(tHour, tMinute);
             timePickerDialog.show();
         });
 

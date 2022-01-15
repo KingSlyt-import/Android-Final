@@ -1,5 +1,6 @@
 package com.example.android_final.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
@@ -157,22 +158,22 @@ public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.ViewHolder
                             minute = 0;
                             second = Integer.parseInt(time[1]);
                         }
-                        long millisInFuture = hour*3600000+minute*60000+second*1000;
+                        long millisInFuture = hour* 3600000L +minute* 60000L +second* 1000L;
                         holder.bubble.setBackgroundResource(R.drawable.circle_background2);
                         holder.bubble_magic.setText("b");
                         countDownTimer = new CountDownTimer(millisInFuture, 1000) {
+                            @SuppressLint("SetTextI18n")
                             public void onTick(long millisUntilFinished) {
                                 long temp_hour = millisUntilFinished/1000/3600;
                                 long temp_minute = millisUntilFinished/1000%3600/60;
                                 long temp_second = millisUntilFinished/1000%3600%60;
                                 if (temp_hour != 0) {
                                     holder.bubble_time.setText(temp_hour+ ":" +temp_minute+":"+temp_second);
-                                } else if (temp_hour==0) {
+                                } else {
                                     holder.bubble_time.setText(temp_minute+":"+temp_second);
-                                } else if (temp_hour==0 && temp_minute==0){
-                                    holder.bubble_time.setText(""+temp_second);
                                 }
                             }
+                            @SuppressLint("SetTextI18n")
                             public void onFinish() {
                                 holder.bubble_time.setText("Done!");
                                 check = 0;

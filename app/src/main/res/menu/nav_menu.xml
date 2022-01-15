@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:title="@string/general">
         <menu>
             <item
@@ -12,18 +13,18 @@
                 android:title="@string/sync_now" />
         </menu>
     </item>
-    <item android:title="@string/support">
+
+    <item android:title="@string/theme">
         <menu>
             <item
-                android:id="@+id/rating"
-                android:icon="@drawable/rating"
-                android:title="@string/rate_app" />
-            <item
-                android:id="@+id/share"
-                android:icon="@drawable/ic_baseline_share_24"
-                android:title="@string/share_app" />
+                android:id="@+id/theme"
+                android:title="@string/switch_theme"
+                android:icon="@drawable/ic_baseline_wb_sunny_24"
+                app:actionLayout="@layout/theme_switch"
+                app:showAsAction="always"/>
         </menu>
     </item>
+
     <item android:title="@string/logout">
         <menu>
             <item

@@ -23,6 +23,7 @@
         android:layout_marginTop="15dp"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:itemTextColor="?attr/text_color"
         app:layout_constraintStart_toStartOf="@+id/alarm_recyclerview"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
@@ -34,7 +35,7 @@
         android:layout_marginTop="35dp"
         android:singleLine="false"
         android:text="You currently have no alarm"
-        android:justificationMode="inter_word"
+        app:itemTextColor="?attr/text_color"
         android:textColor="@color/black"
         android:textSize="32sp"
         android:visibility="invisible"
