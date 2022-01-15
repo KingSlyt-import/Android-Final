@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.20153985507246377" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/drawable/round_style.xml" value="0.2037037037037037" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_create_categories.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/Admin/Desktop/UngDungDiDong/Android-Final/app/src/main/res/layout/activity_create_note.xml" value="0.14673913043478262" />
@@ -96,7 +97,6 @@
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/menu/edit_delete_menu.xml" value="0.25" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/menu/menu_bottom.xml" value="0.25" />
         <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final2/app/src/main/res/menu/nav_menu.xml" value="0.25" />
-        <entry key="..\:/Users/lenovo-pv/AndroidStudioProjects/Android-Final4/app/src/main/res/layout/fragment_alarm.xml" value="0.1793478260869565" />
         <entry key="app/src/main/res/drawable/round_style.xml" value="0.33707865168539325" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1766304347826087" />
         <entry key="app/src/main/res/layout/item_from_message.xml" value="0.1766304347826087" />

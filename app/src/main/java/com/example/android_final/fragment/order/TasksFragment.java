@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,7 @@ public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListene
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tasks, container, false);
-//        List<Task> taskList = new ArrayList<>();
+
         RecyclerView task_recyclerview = view.findViewById(R.id.task_recyclerview);
         task_recyclerview.setHasFixedSize(true);
         TaskAdapter taskAdapter = new TaskAdapter(getActivity(), taskList, this::OnTaskClick);
@@ -117,7 +118,7 @@ public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListene
     public void OnTaskClick(int position) {
 
         Intent intent = new Intent(getActivity().getApplicationContext(), SubTaskActivity.class);
-
+        intent.putExtra("task_title", taskList.get(position).getName());
         startActivity(intent);
     }
 }

@@ -38,6 +38,7 @@ import java.util.Map;
 public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.ViewHolder> {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     Context context;
     ArrayList<SubTask> subTask = new ArrayList<>();
 

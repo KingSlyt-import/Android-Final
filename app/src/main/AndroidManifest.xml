@@ -83,6 +83,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".fragment.SubTaskActivity" />
+        <activity android:name=".addFunction.CreateSubTask" />
     </application>
 
 </manifest>
