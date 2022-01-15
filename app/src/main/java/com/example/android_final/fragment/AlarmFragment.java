@@ -2,24 +2,39 @@ package com.example.android_final.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.example.android_final.Notify.AlarmReceiver;
 import com.example.android_final.R;
 import com.example.android_final.adapter.AlarmAdapter;
+import com.example.android_final.captcha.EnglishNumberToWords;
+import com.example.android_final.captcha.RandomMath;
 import com.example.android_final.data.Alarm;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -30,10 +45,22 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class AlarmFragment extends Fragment {
     FirebaseFirestore db;
     int tHour, tMinute;
+    Button stopalarmasd;
+    Intent intent;
+
+    //for the captcha
+    public static final int MAX_NUMBER = 100;
+
+    public static final Random RANDOM = new Random();
+
+    interface CaptchaResult {
+        void validate(boolean result);
+    }
 
     @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -138,6 +165,54 @@ public class AlarmFragment extends Fragment {
             timePickerDialog.show();
         });
 
+        stopalarmasd = view.findViewById(R.id.stopalarmasd);
+        stopalarmasd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                processValidation(result -> {
+//                    if (result) {
+//                        intent = new Intent(getContext(), AlarmReceiver.class);
+//                        intent.putExtra("signal", "off");
+//                        getContext().sendBroadcast(intent);
+//                        Toast.makeText(getContext(), "Captcha success", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(getContext(), "Captcha fail", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+
+                db.collection("rings").document("rings").get()
+                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        String ringing = document.getString("rings");
+                                        if (ringing.equals("no")) {
+                                        } else {
+                                            processValidation(result -> {
+                                                if (result) {
+                                                    intent = new Intent(getContext(), AlarmReceiver.class);
+                                                    intent.putExtra("signal", "off");
+                                                    getContext().sendBroadcast(intent);
+                                                    Toast.makeText(getContext(), "Captcha success", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    Toast.makeText(getContext(), "Captcha fail", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }
+                                    } else {
+                                        Log.d("getdata", "No such document");
+                                    }
+                                } else {
+                                    Log.d("getdata", "get failed with ", task.getException());
+                                }
+                            }
+                        });
+            }
+        });
+
 //        stopalarm.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -147,5 +222,57 @@ public class AlarmFragment extends Fragment {
 //        });
 
         return view;
+    }
+
+    public void processValidation(AlarmFragment.CaptchaResult captchaResult) {
+        int randomCaptcha = RANDOM.nextInt(2) + 1;
+
+        switch (randomCaptcha) {
+            case 1:
+                final int num1 = RANDOM.nextInt(MAX_NUMBER);
+                final int num2 = RANDOM.nextInt(num1);
+                String calculate = RandomMath.ShowEquation(num1, num2);
+                final int result = RandomMath.ShowResult(num1, num2, calculate);
+                new MaterialDialog.Builder(getContext()).title("Enter the correct number").
+                        content(calculate.toUpperCase()).
+                        inputType(InputType.TYPE_CLASS_NUMBER).
+                        input("", "", new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                int number = -1;
+
+                                try {
+                                    number = Integer.parseInt(input.toString());
+                                } catch (Exception e) {
+                                    number = -1;
+                                }
+
+                                captchaResult.validate(number == result);
+                            }
+                        }).show();
+                break;
+            case 2:
+                final int numberToFind = RANDOM.nextInt(MAX_NUMBER);
+                String numberToStr = EnglishNumberToWords.convert(numberToFind);
+
+                new MaterialDialog.Builder(getContext()).title("Enter the correct number").
+                        content(numberToStr.toUpperCase()).
+                        inputType(InputType.TYPE_CLASS_NUMBER).
+                        input("", "", new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                int number = -1;
+
+                                try {
+                                    number = Integer.parseInt(input.toString());
+                                } catch (Exception e) {
+                                    number = -1;
+                                }
+
+                                captchaResult.validate(number == numberToFind);
+                            }
+                        }).show();
+                break;
+        }
     }
 }

@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.PowerManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -14,9 +16,13 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.example.android_final.MainActivity;
 import com.example.android_final.R;
+import com.example.android_final.addFunction.CreateCategories;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AlarmReceiver extends BroadcastReceiver {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -56,6 +62,22 @@ public class AlarmReceiver extends BroadcastReceiver {
                 wl.acquire(3000); //set your time in milliseconds
             }
             manager.notify((int)Math.floor(Math.random()*(1000-10+1)+10), notification.build());
+        }
+
+        if (document != null) {
+            db.collection("alarms").document(document).update("checked","no")
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
         }
     }
 }

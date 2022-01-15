@@ -52,15 +52,6 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
     PendingIntent pending;
     Intent intent;
 
-    //for the captcha
-    public static final int MAX_NUMBER = 100;
-
-    public static final Random RANDOM = new Random();
-
-    interface CaptchaResult {
-        void validate(boolean result);
-    }
-
     public AlarmAdapter(Context context,List<Alarm> messages) {
         this.messages = messages;
         this.context = context;
@@ -146,10 +137,6 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
             @Override
             public void onClick(View view) {
                 if (holder.alarm_onoroff.isChecked()) {
-
-                    //captcha
-
-                    ////// captcha ok //////
                     db.collection("alarms").document(m.getDocument()).update("checked","no")
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -165,10 +152,8 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
                             });
                     PendingIntent.getBroadcast(context, Integer.parseInt(m.getRandomID()), intent,
                             PendingIntent.FLAG_UPDATE_CURRENT).cancel();
-                    intent.putExtra("signal", "off");
-                    context.sendBroadcast(intent);
-                    ////// captcha ok //////
-
+//                    intent.putExtra("signal", "off");
+//                    context.sendBroadcast(intent);
                 } else {
                     db.collection("alarms").document(m.getDocument()).update("checked","yes")
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -252,58 +237,6 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
             alarm_onoroff_parent = itemView.findViewById(R.id.alarm_onoroff_parent);
             alarm_onoroff = itemView.findViewById(R.id.alarm_onoroff);
             alarm_item_bg = itemView.findViewById(R.id.alarm_item_bg);
-        }
-    }
-
-    public void processValidation(CaptchaResult captchaResult) {
-        int randomCaptcha = RANDOM.nextInt(2) + 1;
-
-        switch (randomCaptcha) {
-            case 1:
-                final int num1 = RANDOM.nextInt(MAX_NUMBER);
-                final int num2 = RANDOM.nextInt(MAX_NUMBER);
-                String calculate = RandomMath.ShowEquation(num1, num2);
-                final int result = RandomMath.ShowResult(num1, num2, calculate);
-                new MaterialDialog.Builder(context.getApplicationContext()).title("Enter the correct number").
-                        content(calculate.toUpperCase()).
-                        inputType(InputType.TYPE_CLASS_NUMBER).
-                        input("", "", new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                                int number = -1;
-
-                                try {
-                                    number = Integer.parseInt(input.toString());
-                                } catch (Exception e) {
-                                    number = -1;
-                                }
-
-                                captchaResult.validate(number == result);
-                            }
-                        }).show();
-                break;
-            case 2:
-                final int numberToFind = RANDOM.nextInt(MAX_NUMBER);
-                String numberToStr = EnglishNumberToWords.convert(numberToFind);
-
-                new MaterialDialog.Builder(context.getApplicationContext()).title("Enter the correct number").
-                        content(numberToStr.toUpperCase()).
-                        inputType(InputType.TYPE_CLASS_NUMBER).
-                        input("", "", new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                                int number = -1;
-
-                                try {
-                                    number = Integer.parseInt(input.toString());
-                                } catch (Exception e) {
-                                    number = -1;
-                                }
-
-                                captchaResult.validate(number == numberToFind);
-                            }
-                        }).show();
-                break;
         }
     }
 }
