@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.android_final.R;
 import com.example.android_final.adapter.TaskAdapter;
+import com.example.android_final.data.SubTask;
 import com.example.android_final.data.Task;
 import com.example.android_final.fragment.SubTaskActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +40,7 @@ public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListene
     FirebaseFirestore db;
     FirebaseUser firebaseUser;
     List<Task> taskList = new ArrayList<>();
+    ArrayList<SubTask> subTasks = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,7 +50,7 @@ public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListene
 
         RecyclerView task_recyclerview = view.findViewById(R.id.task_recyclerview);
         task_recyclerview.setHasFixedSize(true);
-        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), taskList, this::OnTaskClick);
+        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), taskList, subTasks, this::OnTaskClick);
         task_recyclerview.setAdapter(taskAdapter);
         task_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 

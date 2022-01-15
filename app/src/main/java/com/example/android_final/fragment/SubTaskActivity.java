@@ -61,10 +61,6 @@ public class SubTaskActivity extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         subtask_recyclerview.addItemDecoration(dividerItemDecoration);
 
-        //hold and drag item
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(subtask_recyclerview);
-
         //get current user
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -111,26 +107,4 @@ public class SubTaskActivity extends AppCompatActivity {
             }
         });
     }
-
-    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP |
-            ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, 0) {
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-
-            int fromPosition = viewHolder.getAdapterPosition();
-            int toPosition = target.getAdapterPosition();
-
-            Collections.swap(subTask, fromPosition, toPosition);
-
-            recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
-
-            return false;
-        }
-
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
-        }
-    };
-
 }

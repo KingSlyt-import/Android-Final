@@ -20,10 +20,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_final.R;
 import com.example.android_final.custom.CustomRadioButton;
+import com.example.android_final.data.SubTask;
 import com.example.android_final.data.Task;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,14 +41,15 @@ import java.util.Map;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<Task> tasks;
+    ArrayList<SubTask> subTask;
     Context context;
-    List<NoteAdapter.ViewHolder> viewHolderList = new ArrayList<>();
-    OnTaskListener onTaskListener;
-    int i = 0;
 
-    public TaskAdapter(Context context, List<Task> tasks, OnTaskListener onTaskListener) {
+    OnTaskListener onTaskListener;
+
+    public TaskAdapter(Context context, List<Task> tasks, ArrayList<SubTask> subTask, OnTaskListener onTaskListener) {
         this.context = context;
         this.tasks = tasks;
+        this.subTask = subTask;
         this.onTaskListener = onTaskListener;
     }
     @NonNull
@@ -64,11 +67,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         if(m==null)
             return;
         holder.task_item_name.setText(m.getName());
-//        if (m.getBody() == null) {
-//            holder.task_item_body.setText("dasdasd");
-//        } else {
-//            holder.task_item_body.setText(m.getDay()+" | "+m.getBody());
-//        }
+
         int day = LocalDateTime.now().getDayOfMonth();
         int month = LocalDateTime.now().getMonthValue();
         int year = LocalDateTime.now().getYear();
@@ -197,6 +196,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                 }
             }
         });
+
+        SubTaskAdapter subTaskAdapter = new SubTaskAdapter(context, subTask);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        holder.nested_rv.setLayoutManager(linearLayoutManager);
+        holder.nested_rv.setAdapter(subTaskAdapter);
     }
 
     @Override
@@ -211,7 +215,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         RadioGroup task_item_radiogroup;
         LinearLayout task_item;
         TextView task_importance;
-
+        RecyclerView nested_rv;
         OnTaskListener onTaskListener;
 //        CheckBox task_item_completion;
         public ViewHolder(@NonNull View itemView, OnTaskListener onTaskListener) {
@@ -222,6 +226,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             task_item_radiogroup = itemView.findViewById(R.id.task_item_radiogroup);
             task_item = itemView.findViewById(R.id.task_item);
             task_importance = itemView.findViewById(R.id.task_importance);
+            nested_rv = itemView.findViewById(R.id.nested_rv);
 
             this.onTaskListener = onTaskListener;
 

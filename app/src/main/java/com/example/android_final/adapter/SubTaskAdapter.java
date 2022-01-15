@@ -50,7 +50,7 @@ public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.subtask_item,parent,false);
         SubTaskAdapter.ViewHolder holder = new SubTaskAdapter.ViewHolder(view);
         return holder;
     }
@@ -63,7 +63,7 @@ public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.ViewHold
         if(sub_task == null)
             return;
 
-        holder.task_item_name.setText(sub_task.getName());
+        holder.sub_task_item_name.setText(sub_task.getName());
 
         int day = LocalDateTime.now().getDayOfMonth();
         int month = LocalDateTime.now().getMonthValue();
@@ -71,26 +71,26 @@ public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.ViewHold
 
         String temp_time[] = sub_task.getDay().split("/");
         if (day == Integer.parseInt(temp_time[0]) && month == Integer.parseInt(temp_time[1]) && year == Integer.parseInt(temp_time[2])) {
-            holder.task_item_body.setText("Today");
+            holder.sub_task_item_body.setText("Today");
         } else {
-            holder.task_item_body.setText(sub_task.getDay());
+            holder.sub_task_item_body.setText(sub_task.getDay());
         }
 
-        holder.task_item_radiogroup.clearCheck();
+        holder.sub_task_item_radiogroup.clearCheck();
         if (sub_task.getImportance().equals("!")) {
-            holder.task_importance.setText("Level: !");
-            holder.task_importance.setTextColor(Color.parseColor("#55de1b"));
+            holder.sub_task_importance.setText("Level: !");
+            holder.sub_task_importance.setTextColor(Color.parseColor("#55de1b"));
         } else if (sub_task.getImportance().equals("!!")) {
-            holder.task_importance.setText("Level: !!");
-            holder.task_importance.setTextColor(Color.parseColor("#deb41b"));
+            holder.sub_task_importance.setText("Level: !!");
+            holder.sub_task_importance.setTextColor(Color.parseColor("#deb41b"));
         } else if (sub_task.getImportance().equals("!!!")) {
-            holder.task_importance.setText("Level: !!!");
-            holder.task_importance.setTextColor(Color.parseColor("#de351b"));
+            holder.sub_task_importance.setText("Level: !!!");
+            holder.sub_task_importance.setTextColor(Color.parseColor("#de351b"));
         }
         if (position%2==1) {
-            holder.task_item.setBackgroundColor(Color.parseColor("#d2f7dc"));
+            holder.sub_task_item.setBackgroundColor(Color.parseColor("#d2f7dc"));
         } else {
-            holder.task_item.setBackgroundColor(Color.parseColor("#ffffff"));
+            holder.sub_task_item.setBackgroundColor(Color.parseColor("#ffffff"));
         }
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -112,17 +112,16 @@ public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.ViewHold
                                 builder.setView(dialogView);
                                 EditText edit_task_name = dialogView.findViewById(R.id.edit_task_name);
                                 EditText edit_task_note = dialogView.findViewById(R.id.edit_task_note);
-                                edit_task_name.setText(holder.task_item_name.getText().toString());
-                                edit_task_note.setText(holder.task_item_body.getText().toString());
-                                builder
-                                        .setPositiveButton("Done", new DialogInterface.OnClickListener() {
+                                edit_task_name.setText(holder.sub_task_item_name.getText().toString());
+                                edit_task_note.setText(holder.sub_task_item_body.getText().toString());
+                                builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 Map<String, Object> data = new HashMap<>();
                                                 data.put("Name", edit_task_name.getText().toString());
                                                 data.put("Note", edit_task_note.getText().toString());
 
-                                                db.collection("tasks").document(sub_task.getDocument())
+                                                db.collection("subtasks").document(sub_task.getDocument())
                                                         .set(data, SetOptions.merge());
                                             }
                                         })
@@ -136,7 +135,7 @@ public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.ViewHold
                                 dialog.show();
                                 return true;
                             case R.id.deleteitem:
-                                db.collection("tasks")
+                                db.collection("subtasks")
                                         .document(sub_task.getDocument())
                                         .delete()
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -161,19 +160,18 @@ public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.ViewHold
             }
         });
 
-        holder.task_item_completion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.sub_task_item_completion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (holder.task_item_completion.isChecked()) {
-                    //Toast.makeText(context, "Completed", Toast.LENGTH_SHORT).show();
+                if (holder.sub_task_item_completion.isChecked()) {
                     new CountDownTimer(3000, 500) {
                         public void onTick(long millisUntilFinished) {
-                            if(!holder.task_item_completion.isChecked()) {
+                            if(!holder.sub_task_item_completion.isChecked()) {
                                 cancel();
                             }
                         }
                         public void onFinish() {
-                            db.collection("tasks")
+                            db.collection("subtasks")
                                     .document(sub_task.getDocument())
                                     .delete()
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -203,21 +201,22 @@ public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView task_item_name;
-        TextView task_item_body;
-        CustomRadioButton task_item_completion;
-        RadioGroup task_item_radiogroup;
-        LinearLayout task_item;
-        TextView task_importance;
+        TextView sub_task_item_name;
+        TextView sub_task_item_body;
+        TextView sub_task_importance;
+        CustomRadioButton sub_task_item_completion;
+        RadioGroup sub_task_item_radiogroup;
+        LinearLayout sub_task_item;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            task_item_name = itemView.findViewById(R.id.task_item_name);
-            task_item_body = itemView.findViewById(R.id.task_item_body);
-            task_item_completion = itemView.findViewById(R.id.task_item_completion);
-            task_item_radiogroup = itemView.findViewById(R.id.task_item_radiogroup);
-            task_item = itemView.findViewById(R.id.task_item);
-            task_importance = itemView.findViewById(R.id.task_importance);
+            sub_task_item_name = itemView.findViewById(R.id.sub_task_item_name);
+            sub_task_item_body = itemView.findViewById(R.id.sub_task_item_body);
+            sub_task_importance = itemView.findViewById(R.id.sub_task_importance);
+            sub_task_item_completion = itemView.findViewById(R.id.sub_task_item_completion);
+            sub_task_item_radiogroup = itemView.findViewById(R.id.sub_task_item_radiogroup);
+            sub_task_item = itemView.findViewById(R.id.sub_task_item);
         }
     }
 }
