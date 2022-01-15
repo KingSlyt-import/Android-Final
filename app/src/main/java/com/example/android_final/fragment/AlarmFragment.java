@@ -34,6 +34,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -49,6 +51,7 @@ import java.util.Random;
 
 public class AlarmFragment extends Fragment {
     FirebaseFirestore db;
+    FirebaseUser firebaseUser;
     int tHour, tMinute;
     Button stopalarmasd;
     Intent intent;
@@ -71,6 +74,10 @@ public class AlarmFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_alarm, container, false);
         //create alarm
         db = FirebaseFirestore.getInstance();
+
+        //get current user
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         TextView no_alarm = view.findViewById(R.id.no_alarm);
 //        Button stopalarm = view.findViewById(R.id.stopalarm);
 
@@ -104,7 +111,7 @@ public class AlarmFragment extends Fragment {
                     }
                     assert value != null;
                     for (QueryDocumentSnapshot doc : value) {
-                        if (doc.get("time")!=null && doc.getString("randomID")!=null) {
+                        if (doc.get("userId").equals(firebaseUser.getUid())) {
                             messagesList.add(new Alarm(doc.getString("time"), doc.getString("randomID"), doc.getId(), doc.getString("rung"), doc.getString("checked")));
                             Collections.sort(messagesList, new Comparator<Alarm>() {
                                 @Override
@@ -151,6 +158,7 @@ public class AlarmFragment extends Fragment {
                             Toast.makeText(getContext(), "Alarm already exits!", Toast.LENGTH_SHORT).show();
                         } else {
                             Map<String, Object> alarm = new HashMap<>();
+                            alarm.put("userId", firebaseUser.getUid());
                             alarm.put("time", (tHour<10? "0"+tHour : tHour)+":"+(minute<10? "0"+minute : minute));
                             alarm.put("randomID", randomID+"");
                             alarm.put("rung", "no");
