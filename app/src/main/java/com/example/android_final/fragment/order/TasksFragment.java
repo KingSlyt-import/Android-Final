@@ -76,7 +76,7 @@ public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListene
                             return;
                         }
                         for (QueryDocumentSnapshot doc : value) {
-                            if (Objects.equals(doc.get("userId"), firebaseUser.getUid())) {
+                            if (doc.get("userId").equals(firebaseUser.getUid())) {
                                 taskList.add(new Task(doc.getString("Name"), doc.getString("Importance"), doc.getString("Day"), doc.getString("Note"), doc.getId(), false));
                                 Collections.sort(taskList, new Comparator<Task>() {
                                     @Override

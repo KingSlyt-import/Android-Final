@@ -36,7 +36,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<Task> tasks;
@@ -44,6 +43,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     List<NoteAdapter.ViewHolder> viewHolderList = new ArrayList<>();
     OnTaskListener onTaskListener;
     int i = 0;
+
     public TaskAdapter(Context context, List<Task> tasks, OnTaskListener onTaskListener) {
         this.context = context;
         this.tasks = tasks;
@@ -222,6 +222,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             task_item_radiogroup = itemView.findViewById(R.id.task_item_radiogroup);
             task_item = itemView.findViewById(R.id.task_item);
             task_importance = itemView.findViewById(R.id.task_importance);
+
             this.onTaskListener = onTaskListener;
 
             itemView.setOnClickListener(this);
