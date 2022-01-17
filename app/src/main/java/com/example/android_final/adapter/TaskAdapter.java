@@ -20,7 +20,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_final.R;
@@ -41,7 +40,6 @@ import java.util.Map;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<Task> tasks;
-    ArrayList<SubTask> subTask;
     Context context;
 
     OnTaskListener onTaskListener;
@@ -215,7 +213,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             super(itemView);
             task_item_name = itemView.findViewById(R.id.task_item_name);
             task_item_body = itemView.findViewById(R.id.task_item_body);
-            subtask_count = itemView.findViewById(R.id.subtask_count);
             task_item_completion = itemView.findViewById(R.id.task_item_completion);
             task_item_radiogroup = itemView.findViewById(R.id.task_item_radiogroup);
             task_item = itemView.findViewById(R.id.task_item);

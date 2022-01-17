@@ -122,7 +122,7 @@ public class AlarmFragment extends Fragment {
                             if (messagesList.size()!=0) {
                                 no_alarm.setText("");
                             } else {
-                                no_alarm.setText("You don't have any alarm!");
+                                no_alarm.setVisibility(View.VISIBLE);
                             }
                             bubbleAdapter.notifyDataSetChanged();
                             if (messagesList.size()!=0) {
