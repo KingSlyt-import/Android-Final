@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,7 @@ public class SchedulesFragment extends Fragment {
         bubble_schedule.setHasFixedSize(true);
         BubbleAdapter bubbleAdapter = new BubbleAdapter(getActivity(), messagesList);
         bubble_schedule.setAdapter(bubbleAdapter);
-        bubble_schedule.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        bubble_schedule.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         //get current user
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
