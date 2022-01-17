@@ -90,13 +90,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/nested_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:padding="4dp"
-        tools:listitem="@layout/subtask_item" />
 </LinearLayout>

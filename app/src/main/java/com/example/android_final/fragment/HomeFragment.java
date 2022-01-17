@@ -65,10 +65,9 @@ public class HomeFragment extends Fragment implements TaskAdapter.OnTaskListener
         home_congrat = view.findViewById(R.id.home_congrat);
 
         List<Task> taskList = new ArrayList<>();
-        ArrayList<SubTask> subTasks = new ArrayList<>();
         RecyclerView task_recyclerview = view.findViewById(R.id.home_task_recyclerview);
         task_recyclerview.setHasFixedSize(true);
-        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), taskList, subTasks, this::OnTaskClick);
+        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), taskList, this::OnTaskClick);
         task_recyclerview.setAdapter(taskAdapter);
         task_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 

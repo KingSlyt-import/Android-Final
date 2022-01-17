@@ -46,10 +46,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
     OnTaskListener onTaskListener;
 
-    public TaskAdapter(Context context, List<Task> tasks, ArrayList<SubTask> subTask, OnTaskListener onTaskListener) {
+    public TaskAdapter(Context context, List<Task> tasks, OnTaskListener onTaskListener) {
         this.context = context;
         this.tasks = tasks;
-        this.subTask = subTask;
         this.onTaskListener = onTaskListener;
     }
     @NonNull
@@ -157,10 +156,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                         return false;
                     }
                 });
-//                Toast.makeText(context, holder.task_item_name.getText().toString(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
+
+//        holder.subtask_count.setText(subTask.size());
 
         holder.task_item_completion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -196,11 +196,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                 }
             }
         });
-
-        SubTaskAdapter subTaskAdapter = new SubTaskAdapter(context, subTask);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        holder.nested_rv.setLayoutManager(linearLayoutManager);
-        holder.nested_rv.setAdapter(subTaskAdapter);
     }
 
     @Override
@@ -209,24 +204,22 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView task_item_name;
-        TextView task_item_body;
+        TextView task_item_name, task_item_body, subtask_count, task_importance;
         CustomRadioButton task_item_completion;
         RadioGroup task_item_radiogroup;
         LinearLayout task_item;
-        TextView task_importance;
-        RecyclerView nested_rv;
+
         OnTaskListener onTaskListener;
 //        CheckBox task_item_completion;
         public ViewHolder(@NonNull View itemView, OnTaskListener onTaskListener) {
             super(itemView);
             task_item_name = itemView.findViewById(R.id.task_item_name);
             task_item_body = itemView.findViewById(R.id.task_item_body);
+            subtask_count = itemView.findViewById(R.id.subtask_count);
             task_item_completion = itemView.findViewById(R.id.task_item_completion);
             task_item_radiogroup = itemView.findViewById(R.id.task_item_radiogroup);
             task_item = itemView.findViewById(R.id.task_item);
             task_importance = itemView.findViewById(R.id.task_importance);
-            nested_rv = itemView.findViewById(R.id.nested_rv);
 
             this.onTaskListener = onTaskListener;
 
