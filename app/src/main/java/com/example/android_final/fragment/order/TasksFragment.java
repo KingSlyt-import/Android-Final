@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.android_final.R;
 import com.example.android_final.adapter.TaskAdapter;
@@ -26,6 +27,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,6 +47,8 @@ public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListene
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tasks, container, false);
+
+        TextView no_task = view.findViewById(R.id.no_task);
 
         RecyclerView task_recyclerview = view.findViewById(R.id.task_recyclerview);
         task_recyclerview.setHasFixedSize(true);
@@ -70,6 +75,11 @@ public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListene
                                         @Nullable FirebaseFirestoreException e) {
                         taskList.clear();
                         taskAdapter.notifyDataSetChanged();
+                        if (taskList.size()!=0) {
+                            no_task.setText("");
+                        } else {
+                            no_task.setText("You don't have any task!");
+                        }
 
                         if (e != null) {
                             return;
@@ -85,6 +95,11 @@ public class TasksFragment extends Fragment implements TaskAdapter.OnTaskListene
                                 });
                                 Collections.reverse(taskList);
                                 taskAdapter.notifyDataSetChanged();
+                                if (taskList.size()!=0) {
+                                    no_task.setText("");
+                                } else {
+                                    no_task.setText("You don't have any task!");
+                                }
                             }
                         }
                     }
